@@ -25,6 +25,24 @@
         </div>
       </div>
       <div class="form-input">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">SURNAME</ion-label>
+          <ion-input type="text"
+          #surname="ngModel"
+            type="text" 
+            minlength="5"
+            name="surname" 
+            [(ngModel)]="regForm.surname"
+            required>
+          </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
+          <div *ngIf="surname.errors?.required">Surname required</div>
+          <div *ngIf="surname.errors?.minlength">Invalid minLength</div>
+        </div>
+      </div>
+      <div class="form-input">
         <ion-icon name="mail-outline"></ion-icon>
         <ion-item>
           <ion-label position="floating">EMAIL</ion-label>
@@ -81,7 +99,7 @@
           name="conPassword" 
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           [(ngModel)]="regForm.conPassword"
-          required>>
+          required>
           </ion-input>
         </ion-item>
         <div class="alert alert-danger" *ngIf="conPassword.invalid && (conPassword.dirty || conPassword.touched)">
