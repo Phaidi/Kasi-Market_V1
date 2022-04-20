@@ -1,0 +1,63 @@
+<ion-content>
+  <h3 class="tittle" *ngIf="(cartItems$|async).length">{{(cartItems$|async).length}} towards at cart</h3>
+
+  <div class="input">
+    <input #searchQ  (keyup)="searchCode($event)" class="searchbar-search-icon" placeholder="Search your Code" name="searchQ">
+  </div>
+
+  <!-- Testing Code search -->
+  <ion-list lines="none" *ngIf="foods.length > 0">
+    <ion-item-sliding  *ngFor="let item of foods">
+      <ion-item>
+        {{item.code}} 
+      </ion-item>
+      <ion-item (click)="getCodeProducts(item.code)">
+        <ion-item>
+          <app-button (click)="addToCart(item.order)">
+          Add To Cart 
+          </app-button>
+        </ion-item> 
+      </ion-item>
+      
+      <!-- {{item | json }} -->
+      
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- <ion-list *ngIf="foods.length > 0" lines="none">
+    <ion-item-sliding *ngFor="let item of codeItems">
+      <ion-item>
+        <app-cart-item [item]="item" (increase)="onIncrease(item)" (decrease)="onDecrease(item)"></app-cart-item>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeFromCart(item)">
+          <ion-icon name="trash-outline" size="large" color="danger"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list> -->
+  <!-- END -->
+
+  <ion-list lines="none">
+    <ion-item-sliding *ngFor="let item of cartItems$|async">
+      <ion-item>
+        <app-cart-item [item]="item" (increase)="onIncrease(item)" (decrease)="onDecrease(item)"></app-cart-item>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeFromCart(item)">
+          <ion-icon name="trash-outline" size="large" color="danger"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div class="empty-cart" *ngIf="!(cartItems$|async).length">
+    <ion-icon name="cart-outline"></ion-icon>
+    <p>Your cart is empty!!</p>
+  </div>
+
+  <app-button routerLink="/address" *ngIf="(cartItems$|async).length">
+    Checkout: <span><sup>R</sup>{{totalAmount$|async|number: '1.2'}}</span>
+  </app-button>
+  
+</ion-content>

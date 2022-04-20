@@ -1,0 +1,96 @@
+<ion-content>
+  <form  #f="ngForm">
+  <div class="login-section ion-padding">
+    <div class="heading ion-padding">
+      <h1>User-Address</h1>
+      <p>Enter your Address to Checkout</p>
+    </div>
+    <div class="login-form ion-padding">
+      <div class="form-input">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">STREET</ion-label>
+          <ion-input type="text"
+          #street="ngModel"
+            type="text"
+            name="street"
+            [(ngModel)]="adForm.street"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="street.invalid && (street.dirty || street.touched)">
+          <div *ngIf="street.errors?.required">Street required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">TOWN</ion-label>
+          <ion-input type="text"
+          #town="ngModel"
+            type="text"
+            name="town"
+            [(ngModel)]="adForm.town"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="town.invalid && (town.dirty || town.touched)">
+          <div *ngIf="town.errors?.required">Town required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">PROVINCE</ion-label>
+          <ion-input type="text"
+          #province="ngModel"
+            type="text"
+            name="province"
+            [(ngModel)]="adForm.province"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="province.invalid && (province.dirty || province.touched)">
+          <div *ngIf="province.errors?.required">Province required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">CITY</ion-label>
+          <ion-input type="text"
+          #city="ngModel"
+            type="text"
+            name="city"
+            [(ngModel)]="adForm.city"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
+          <div *ngIf="city.errors?.required">City required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">ZIP CODE</ion-label>
+          <ion-input type="text"
+          #zipCode="ngModel"
+            type="text"
+            name="zipCode"
+            [(ngModel)]="adForm.zipCode"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
+          <div *ngIf="zipCode.errors?.required">ZipCode required</div>
+        </div>
+      </div>
+    </div>
+    <div class="action-button ion-padding">
+      <ion-button size="large" shape="round" class="login-button" routerLink="/deliveries" [disabled]="!f.valid">Save</ion-button>
+    </div>
+
+  </div>
+</form>
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-content>
+  <form #f="ngForm" >
+  <div class="login-section ion-padding" >
+    <div class="heading ion-padding">
+      <h1>Create an Account!</h1>
+      <p>Start your supply chain</p>
+    </div>
+    <div class="login-form ion-padding">
+      <div class="form-input">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">NAME</ion-label>
+          <ion-input type="text"
+          #name="ngModel"
+            type="text" 
+            minlength="5"
+            name="name" 
+            [(ngModel)]="regForm.name"
+            required>
+          </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors?.required">Name required</div>
+          <div *ngIf="name.errors?.minlength">Invalid minLength</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">EMAIL</ion-label>
+          <ion-input type="email"
+          #email="ngModel"
+            type="email" 
+            minlength="5"
+            name="email" 
+            pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}"
+            [(ngModel)]="regForm.email"
+            required>
+          </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.required">Email required</div>
+          <div *ngIf="email.errors?.minlength">Invalid minLength</div>
+          <div *ngIf="email.errors?.pattern">Invalid email format</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">PASSWORD</ion-label>
+          <ion-input type="password"
+          #password="ngModel"
+          type="password" 
+          minlength="5"
+          name="password" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          [(ngModel)]="regForm.password"
+          required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors?.required">Password required</div>
+          <div *ngIf="password.errors?.minlength">Invalid minLength</div>
+          <div *ngIf="password.errors?.pattern">
+            <h3>Password must contain the following:</h3>
+            <p id="letter1" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital1" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number1" class="invalid">A <b>number</b></p>
+            <p id="length1" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">CONFIRM PASSWORD</ion-label>
+          <ion-input type="password"
+          #conPassword="ngModel"
+          type="password" 
+          minlength="5"
+          name="conPassword" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          [(ngModel)]="regForm.conPassword"
+          required>>
+          </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="conPassword.invalid && (conPassword.dirty || conPassword.touched)">
+          <div *ngIf="conPassword.errors?.required">Password required</div>
+          <div *ngIf="conPassword.errors?.minlength">Invalid minLength</div>
+          <div *ngIf="conPassword.errors?.pattern">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="action-button ion-padding">
+      <ion-button size="large" class="login-button" routerLink="/login" [disabled]="!f.valid">Sign up</ion-button>
+      <ion-button size="large" fill="outline" routerLink="/login" class="signup-button">Log in</ion-button>
+    </div>
+
+  </div>
+</form>
+</ion-content>
