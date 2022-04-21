@@ -5,6 +5,7 @@ import { CartItem } from 'src/app/models/cart-item.model';
 import { FoodService } from 'src/app/services/food.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastController } from '@ionic/angular';
+import { ItermService } from 'src/app/services/iterm/iterm.service';
 
 @Component({
   selector: 'app-detail',
@@ -18,6 +19,7 @@ export class DetailPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private foodService: FoodService,
     private cartService: CartService,
+    private itermService: ItermService,
     private toastCtrl: ToastController)
   {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
@@ -25,19 +27,40 @@ export class DetailPage implements OnInit {
 
   ngOnInit() {
     this.food = this.foodService.getFood(this.id);
+    // this.getIterm()
+  }
+
+  getIterm(){
+    console.log(this.id)
+
+    this.itermService.getIterm(this.id).subscribe({
+      next: (data:any) =>{
+        console.log("Hello from details",data.iterm)
+        this.food = data.iterm
+
+      },
+      error: err =>{
+        console.log(err)
+      }
+    })
+
   }
 
   addItemToCart() {
-    const cartitem: CartItem = {
-      id: this.food.id,
-      name: this.food.title,
-      price: this.food.price,
-      image: this.food.image,
-      quantity: 1,
-    };
+    
+    this.cartService.addToCart(this.id).subscribe({
+      next: (data:any) =>{
+        console.log("Hello from details",data)
+       
+        this.presentToast();
+      },
+      error: err =>{
+        console.log(err)
+      }
+    })
 
-    this.cartService.addToCart(cartitem);
-    this.presentToast();
+    // this.cartService.addToCart(cartitem);
+    
   }
 
   async presentToast() {

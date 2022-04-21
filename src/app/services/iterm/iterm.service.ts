@@ -11,7 +11,7 @@ import { Food } from 'src/app/models/food.model';
 })
 export class ItermService {
 
-  URL: string = `http://localhost:3001/api/v1/iterms`
+  URL: string = `http://localhost:3000/api/v1/iterms`
 
   constructor(private http:HttpClient) { }
 
@@ -60,6 +60,15 @@ export class ItermService {
           return data;
         }),
         catchError(this.handleError));
+  }
+
+  public getIterm(id: Number): Observable<Food> { // cart ID is being sent
+    return this.http.get<Food>(`${this.URL}/`+id)
+    .pipe(
+      map(data => {
+        return data;
+      }), catchError(this.handleError));
+
   }
 
   public getOrder(id): Observable<Food> { // cart ID is being sent

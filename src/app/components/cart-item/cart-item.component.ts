@@ -8,7 +8,7 @@ import { CartItem } from 'src/app/models/cart-item.model';
 })
 export class CartItemComponent {
 
-  @Input() item: CartItem;
+  @Input() item: any;
   @Output() increase = new EventEmitter();
   @Output() decrease = new EventEmitter();
 

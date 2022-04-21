@@ -21,16 +21,17 @@ export class FoodCardComponent {
     private toastCtrl: ToastController){};
 
   addItemToCart() {
-    const cartitem: CartItem = {
-      id: this.item.id,
-      name: this.item.title,
-      price: this.item.price,
-      image: this.item.image,
-      quantity: 1,
-    };
-
-    this.cartService.addToCart(cartitem);
-    this.presentToast();
+   
+    this.cartService.addToCart(this.item.id).subscribe({
+      next: (data:any) =>{
+             
+        this.presentToast();
+      },
+      error: err =>{
+        console.log(err)
+      }
+    })
+    
   }
 
   async presentToast() {

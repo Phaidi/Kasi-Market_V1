@@ -1,12 +1,12 @@
-<ion-content>
-  <h3 class="tittle" *ngIf="(cartItems$|async).length">{{(cartItems$|async).length}} towards at cart</h3>
+<!-- <ion-content>
+  <h3 class="tittle" *ngIf="(myCart|async).length">{{(myCart|async).length}} towards at cart</h3> -->
 
-  <div class="input">
+  <!-- <div class="input">
     <input #searchQ  (keyup)="searchCode($event)" class="searchbar-search-icon" placeholder="Search your Code" name="searchQ">
-  </div>
+  </div> -->
 
   <!-- Testing Code search -->
-  <ion-list lines="none" *ngIf="foods.length > 0">
+  <!-- <ion-list lines="none" *ngIf="foods.length > 0">
     <ion-item-sliding  *ngFor="let item of foods">
       <ion-item>
         {{item.code}} 
@@ -17,12 +17,12 @@
           Add To Cart 
           </app-button>
         </ion-item> 
-      </ion-item>
+      </ion-item> -->
       
       <!-- {{item | json }} -->
       
-    </ion-item-sliding>
-  </ion-list>
+    <!-- </ion-item-sliding>
+  </ion-list> -->
 
   <!-- <ion-list *ngIf="foods.length > 0" lines="none">
     <ion-item-sliding *ngFor="let item of codeItems">
@@ -38,9 +38,43 @@
   </ion-list> -->
   <!-- END -->
 
-  <ion-list lines="none">
-    <ion-item-sliding *ngFor="let item of cartItems$|async">
-      <ion-item>
+  <!-- <ion-list lines="none">
+    <ion-item-sliding *ngFor="let item of myCart">
+      hey -->
+      <!-- <ion-item>
+        <app-cart-item [item]="item" (increase)="onIncrease(item)" (decrease)="onDecrease(item)"></app-cart-item>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeFromCart(item)">
+          <ion-icon name="trash-outline" size="large" color="danger"></ion-icon>
+        </ion-item-option>
+      </ion-item-options> -->
+    <!-- </ion-item-sliding>
+  </ion-list>
+
+  <div class="empty-cart" *ngIf="!(myCart|async).length">
+    <ion-icon name="cart-outline"></ion-icon>
+    <p>Your cart is empty!!</p>
+  </div>
+
+  <app-button routerLink="/address" *ngIf="(myCart|async).length">
+    Checkout: <span><sup>R</sup>{{totalAmount$|async|number: '1.2'}}</span>
+  </app-button>
+  
+</ion-content> -->
+
+<ion-header class="action-button">
+  <ion-toolbar class="login-button">
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+   <ion-list lines="none">
+    <ion-item-sliding *ngFor="let item of myCart">
+ 
+       <ion-item>
         <app-cart-item [item]="item" (increase)="onIncrease(item)" (decrease)="onDecrease(item)"></app-cart-item>
       </ion-item>
       <ion-item-options side="end">
@@ -49,15 +83,7 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-  </ion-list>
-
-  <div class="empty-cart" *ngIf="!(cartItems$|async).length">
-    <ion-icon name="cart-outline"></ion-icon>
-    <p>Your cart is empty!!</p>
-  </div>
-
-  <app-button routerLink="/address" *ngIf="(cartItems$|async).length">
-    Checkout: <span><sup>R</sup>{{totalAmount$|async|number: '1.2'}}</span>
-  </app-button>
-  
+    
+   </ion-list>
+   
 </ion-content>

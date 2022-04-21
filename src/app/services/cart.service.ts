@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 export class CartService {
 
   private items$ = new BehaviorSubject<CartItem[]>([ ]);
-  URL: string = `http://localhost:3001/api/v1/carts`
+  URL: string = `http://localhost:3000/api/v1/carts`
 
   constructor(private http:HttpClient) { }
 
@@ -54,24 +54,33 @@ export class CartService {
   // }
 
   addToCart(id: Number) {
-    return this.http.post(`${this.URL}/`,{})
+    return this.http.post(`${this.URL}/`,{itermId: id})
     .pipe(
       map(data => {
         return data;
       }), catchError(this.handleError));
   }
 
+  // removeItem(id: number) {
+
+  //   const deleteId = this.items$.getValue().findIndex((item )=> item.id === id);
+  //   this.items$.getValue().splice(deleteId,1);
+  // }
+
   removeItem(id: number) {
-
-    const deleteId = this.items$.getValue().findIndex((item )=> item.id === id);
-    this.items$.getValue().splice(deleteId,1);
+    return this.http.delete(`${this.URL}/`+ id)
+    .pipe(
+      map(data => {
+        return data;
+      }), catchError(this.handleError));
+    
   }
-
   changeQty(quantity: number, id: number) {
-    const items = this.items$.getValue();
-    const index = items.findIndex(item => item.id === id);
-    items[index].quantity += quantity;
-    this.items$.next(items);
+    return this.http.patch(`${this.URL}/`+id,{quantity: quantity})
+    .pipe(
+      map(data => {
+        return data;
+      }), catchError(this.handleError));
   }
 
   getTotalAmount() {

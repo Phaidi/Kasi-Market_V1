@@ -15,99 +15,102 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartPage implements OnInit {
 
-  cartItems$: Observable<CartItem[]>;
-  totalAmount$: Observable<number>;
+  // cartItems$: Observable<CartItem[]>;
+  // totalAmount$: Observable<number>;
+  myCart: any[]
 
-  foods: any[] = [];
-  codeItems: any;
+  // foods: any[] = [];
+  // codeItems: any;
 
-  tempF: any[] = [];
+  // tempF: any[] = [];
 
-  test1 = this.tempF = [
-    {
-      code: 123456,
-      order: [
-        {
-          id: 1,
-          title: 'Cordless Driller',
-          price: 1200,
-          image: 'assets/images/i1.png',
-          description:
-            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        }
-      ]
-    },
-    {
-      code: 123457,
-      order: [
-        {
-          id: 4,
-          title: 'Black Pearl',
-          price: 1200,
-          image: 'assets/images/i4.jpg',
-          description:
-            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        },
-        {
-          id: 3,
-          title: 'Yeezy',
-          price: 1500,
-          image: 'assets/images/i3.png',
-          description:
-            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        },
-      ]
-    },
-    {
-      code: 123458,
-      order: [
-        {
-          id: 3,
-          title: 'Yeezy',
-          price: 1500,
-          image: 'assets/images/i3.png',
-          description:
-            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        },
-        {
-          id: 5,
-          title: 'Nike',
-          price: 1100,
-          image: 'assets/images/i5.jpg',
-          description:
-            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        },
-        {
-          id: 4,
-          title: 'Black Pearl',
-          price: 1200,
-          image: 'assets/images/i4.jpg',
-          description:
-            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        },
-      ]
-    }
+  // test1 = this.tempF = [
+  //   {
+  //     code: 123456,
+  //     order: [
+  //       {
+  //         id: 1,
+  //         title: 'Cordless Driller',
+  //         price: 1200,
+  //         image: 'assets/images/i1.png',
+  //         description:
+  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     code: 123457,
+  //     order: [
+  //       {
+  //         id: 4,
+  //         title: 'Black Pearl',
+  //         price: 1200,
+  //         image: 'assets/images/i4.jpg',
+  //         description:
+  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+  //       },
+  //       {
+  //         id: 3,
+  //         title: 'Yeezy',
+  //         price: 1500,
+  //         image: 'assets/images/i3.png',
+  //         description:
+  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     code: 123458,
+  //     order: [
+  //       {
+  //         id: 3,
+  //         title: 'Yeezy',
+  //         price: 1500,
+  //         image: 'assets/images/i3.png',
+  //         description:
+  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+  //       },
+  //       {
+  //         id: 5,
+  //         title: 'Nike',
+  //         price: 1100,
+  //         image: 'assets/images/i5.jpg',
+  //         description:
+  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+  //       },
+  //       {
+  //         id: 4,
+  //         title: 'Black Pearl',
+  //         price: 1200,
+  //         image: 'assets/images/i4.jpg',
+  //         description:
+  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+  //       },
+  //     ]
+  //   }
 
-  ];
+  // ];
 
 
   constructor(private cartService: CartService,
     private alertCtrl: AlertController) {
-    this.tempF = this.foods;
+    // this.tempF = this.foods;
+    this.getCart();
   }
 
   ngOnInit() {
     // this.cartItems$ = this.cartService.getCart()
-    this.totalAmount$ = this.cartService.getTotalAmount();
+    // this.getCart();
+    // this.totalAmount$ = this.cartService.getTotalAmount();
   }
 
   getCart(){
     this.cartService.getCart().subscribe({
       next: (data: any) => {
-        console.log('Log in data:',data)
+        console.log('Im in cart data :',data.carts)
         // this.errors = [];
 
-        this.cartItems$ = data;
+        this.myCart = data.carts;
 
       },
       error: err => {
@@ -118,15 +121,33 @@ export class CartPage implements OnInit {
 
   onIncrease(item: CartItem) {
 
-    this.cartService.changeQty(1, item.id);
+    const quantity = item.quantity +1
+    this.changeQty(quantity, item.id);
+    
   }
 
   onDecrease(item: CartItem) {
-    if (item.quantity === 1) { this.removeFromCart(item); };
-    this.cartService.changeQty(0, item.id);
+    
+    if (item.quantity === 1) this.removeFromCart(item);
+    else {
+      const quantity = item.quantity -1
+    this.changeQty(quantity, item.id);
+    }
+  }
+
+  changeQty(quantity, id){
+    this.cartService.changeQty(quantity, id).subscribe({
+      next: (data: any) => {
+        console.log(data)
+      },
+      error: err => {
+        console.log(err)
+      }
+    });
   }
 
   async removeFromCart(item: CartItem) {
+    // console.log(item)
     const alert = await this.alertCtrl.create({
       header: 'Remove',
       message: 'Are you sure you want to remove item',
@@ -134,7 +155,16 @@ export class CartPage implements OnInit {
         {
           text: 'yes',
           //handler: () => this.cartService.removeItem(item.id),
-          handler: () => this.cartService.removeItem(item.id),
+          handler: () => this.cartService.removeItem(item.id).subscribe({
+            next: (data:any) =>{
+              console.log("Hello from delete",data)
+             
+      
+            },
+            error: err =>{
+              console.log(err)
+            }
+          }),
         },
         {
           text: 'No',
@@ -145,54 +175,54 @@ export class CartPage implements OnInit {
     alert.present();
   }
 
-  searchCode(data) {
+  // searchCode(data) {
 
-    const value = data.target.value;
+  //   const value = data.target.value;
 
-    this.foods = this.tempF;
-
-
-    const filter = this.test1.filter(el => el.code.toString() === (value));
-    this.foods = filter;
-
-    if (value === '' || !filter) {
-      this.foods = []
-      this.codeItems = [];
-    };
+  //   this.foods = this.tempF;
 
 
+  //   const filter = this.test1.filter(el => el.code.toString() === (value));
+  //   this.foods = filter;
 
-  }
+  //   if (value === '' || !filter) {
+  //     this.foods = []
+  //     this.codeItems = [];
+  //   };
 
-  getCodeProducts(code) {
-    const filter = this.test1.find(el => el.code === code);
 
-    this.codeItems = filter.order;
 
-    // console.log('Hello',filter.order)
+  // }
 
-  }
+  // getCodeProducts(code) {
+  //   const filter = this.test1.find(el => el.code === code);
 
-  addToCart(order) {
+  //   this.codeItems = filter.order;
 
-    // console.log(order.length)
-    if (order.length > 1) {
+  //   // console.log('Hello',filter.order)
 
-      order.forEach(el => {
+  // }
 
-        el.quantity = 1;
-        el.name = el.title;
-        this.cartService.addToCart(el)
-      });
-    } else {
-      order[0].quantity = 1;
-      order[0].name = order[0].title;
-      this.cartService.addToCart(order[0])
-    }
+  // addToCart(order) {
+
+  //   // console.log(order.length)
+  //   if (order.length > 1) {
+
+  //     order.forEach(el => {
+
+  //       el.quantity = 1;
+  //       el.name = el.title;
+  //       this.cartService.addToCart(el)
+  //     });
+  //   } else {
+  //     order[0].quantity = 1;
+  //     order[0].name = order[0].title;
+  //     this.cartService.addToCart(order[0])
+  //   }
     // this.cartItems$ = this.cartService.getCart();
     // this.totalAmount$ = this.cartService.getTotalAmount();
 
-  }
+  //}
 
 
 }
