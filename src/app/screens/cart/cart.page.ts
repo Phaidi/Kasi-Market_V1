@@ -97,8 +97,23 @@ export class CartPage implements OnInit {
   }
 
   ngOnInit() {
-    this.cartItems$ = this.cartService.getCart();
+    // this.cartItems$ = this.cartService.getCart()
     this.totalAmount$ = this.cartService.getTotalAmount();
+  }
+
+  getCart(){
+    this.cartService.getCart().subscribe({
+      next: (data: any) => {
+        console.log('Log in data:',data)
+        // this.errors = [];
+
+        this.cartItems$ = data;
+
+      },
+      error: err => {
+        // this.errors[0] = err.message;
+      }
+    })
   }
 
   onIncrease(item: CartItem) {
@@ -174,8 +189,8 @@ export class CartPage implements OnInit {
       order[0].name = order[0].title;
       this.cartService.addToCart(order[0])
     }
-    this.cartItems$ = this.cartService.getCart();
-    this.totalAmount$ = this.cartService.getTotalAmount();
+    // this.cartItems$ = this.cartService.getCart();
+    // this.totalAmount$ = this.cartService.getTotalAmount();
 
   }
 
