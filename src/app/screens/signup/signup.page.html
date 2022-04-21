@@ -116,7 +116,7 @@
       </div>
     </div>
     <div class="action-button ion-padding">
-      <ion-button size="large" class="login-button" routerLink="/login" [disabled]="!f.valid">Sign up</ion-button>
+      <ion-button size="large" class="login-button" (click)="signup()" [disabled]="!f.valid">Sign up</ion-button>
       <ion-button size="large" fill="outline" routerLink="/login" class="signup-button">Log in</ion-button>
     </div>
 
