@@ -6,7 +6,7 @@ import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -24,72 +24,7 @@ export class CartPage implements OnInit {
 
   // tempF: any[] = [];
 
-  // test1 = this.tempF = [
-  //   {
-  //     code: 123456,
-  //     order: [
-  //       {
-  //         id: 1,
-  //         title: 'Cordless Driller',
-  //         price: 1200,
-  //         image: 'assets/images/i1.png',
-  //         description:
-  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     code: 123457,
-  //     order: [
-  //       {
-  //         id: 4,
-  //         title: 'Black Pearl',
-  //         price: 1200,
-  //         image: 'assets/images/i4.jpg',
-  //         description:
-  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-  //       },
-  //       {
-  //         id: 3,
-  //         title: 'Yeezy',
-  //         price: 1500,
-  //         image: 'assets/images/i3.png',
-  //         description:
-  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-  //       },
-  //     ]
-  //   },
-  //   {
-  //     code: 123458,
-  //     order: [
-  //       {
-  //         id: 3,
-  //         title: 'Yeezy',
-  //         price: 1500,
-  //         image: 'assets/images/i3.png',
-  //         description:
-  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-  //       },
-  //       {
-  //         id: 5,
-  //         title: 'Nike',
-  //         price: 1100,
-  //         image: 'assets/images/i5.jpg',
-  //         description:
-  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-  //       },
-  //       {
-  //         id: 4,
-  //         title: 'Black Pearl',
-  //         price: 1200,
-  //         image: 'assets/images/i4.jpg',
-  //         description:
-  //           'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-  //       },
-  //     ]
-  //   }
-
-  // ];
+  
 
 
   constructor(private cartService: CartService,
@@ -128,7 +63,7 @@ export class CartPage implements OnInit {
 
   onDecrease(item: CartItem) {
     
-    if (item.quantity === 1) this.removeFromCart(item);
+    if (item.quantity === 1) {this.removeFromCart(item);}
     else {
       const quantity = item.quantity -1
     this.changeQty(quantity, item.id);
@@ -156,8 +91,8 @@ export class CartPage implements OnInit {
           text: 'yes',
           //handler: () => this.cartService.removeItem(item.id),
           handler: () => this.cartService.removeItem(item.id).subscribe({
-            next: (data:any) =>{
-              console.log("Hello from delete",data)
+            next: (data: any) =>{
+              console.log('Hello from delete',data)
              
       
             },

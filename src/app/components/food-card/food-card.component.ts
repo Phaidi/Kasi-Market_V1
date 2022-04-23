@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { CartItem } from 'src/app/models/cart-item.model';
+import { CartItem } from '../../models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
-import { CartService } from 'src/app/services/cart.service';
-import { FoodService } from 'src/app/services/food.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-food-card',
@@ -16,22 +15,21 @@ export class FoodCardComponent {
 
   @Output() clicked = new EventEmitter();
 
-  constructor(private foodService: FoodService,
-    private cartService: CartService,
+  constructor(private cartService: CartService,
     private toastCtrl: ToastController){};
 
   addItemToCart() {
-   
+
     this.cartService.addToCart(this.item.id).subscribe({
-      next: (data:any) =>{
-             
+      next: (data: any) =>{
+
         this.presentToast();
       },
       error: err =>{
-        console.log(err)
+        console.log(err);
       }
-    })
-    
+    });
+
   }
 
   async presentToast() {

@@ -18,7 +18,7 @@
             [(ngModel)]="regForm.name"
             required>
           </ion-input>
-        </ion-item>
+        </ion-item> 
         <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
           <div *ngIf="name.errors?.required">Name required</div>
           <div *ngIf="name.errors?.minlength">Invalid minLength</div>
@@ -70,6 +70,7 @@
           #password="ngModel"
           type="password" 
           minlength="5"
+          match="checkP()"
           name="password" 
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           [(ngModel)]="regForm.password"
@@ -86,6 +87,7 @@
             <p id="number1" class="invalid">A <b>number</b></p>
             <p id="length1" class="invalid">Minimum <b>8 characters</b></p>
           </div>
+          <div *ngIf="password.errors?.match">wwwwwwwwwwww</div>
         </div>
       </div>
       <div class="form-input">

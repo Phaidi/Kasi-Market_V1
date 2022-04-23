@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -12,12 +15,12 @@ import {User1} from '../../models/user1';
 const jwt = new JwtHelperService();
 
 class DecodedToken {
-  exp: number = 0;
-  iat: number = 0;
-  name: string = '';
-  id: number = 0;
-  userType: number = 0;
-  photo: string = '';
+  exp = 0;
+  iat = 0;
+  name = '';
+  id = 0;
+  userType = 0;
+  photo = '';
 }
 
 
@@ -26,17 +29,17 @@ class DecodedToken {
 })
 export class AuthService {
 
-  URL: string = `http://localhost:3000/api/v1/users`
-  private decodedToken: DecodedToken = new DecodedToken;
+  URL = `http://localhost:3000/api/v1/users`;
+  private decodedToken: DecodedToken = new DecodedToken();
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.decodedToken = new DecodedToken();
    }
 
   private handleError(error: HttpErrorResponse) {
 
     let errors = [{ status: 'Error', message: ' Ooops, someting went wrong!' }];
-    let msg = ' Ooops, someting went wrong!'
+    let msg = ' Ooops, someting went wrong!';
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       // msg = error.error.message ? error.error.message:error.error.text
@@ -44,19 +47,19 @@ export class AuthService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
-     
-      msg = error.error.message ? error.error.message:error.error.text
-        errors = error.error
+
+      msg = error.error.message ? error.error.message:error.error.text;
+        errors = error.error;
     }
     // Return an observable with a user-facing error message.
     // return throwError(errors);
-    console.log('service error:',error.error)
-    return throwError(() => new Error(msg))
+    console.log('service error:',error.error);
+    return throwError(() => new Error(msg));
   }
 
-  signUp(data: User1):Observable<User1>
+  signUp(data: User1): Observable<User1>
   {
-     
+
 
       return this.http
       .post<User1>(`${this.URL}/signup`, data)
@@ -64,23 +67,23 @@ export class AuthService {
         map(data => {
 
           console.log('Im in auth service: ', data);
-          
+
           return data;
         }), catchError(this.handleError));
   }
 
-  logIn(data: User1):Observable<User1>
+  logIn(data: User1): Observable<User1>
   {
-      
+
     return this.http
     .post<User1>(`${this.URL}/login`, data)
     .pipe(
       map((data: any) => {
 
-        const token = data['token']
-        console.log('Im in auth service: ', data['token']);
+        const token = data.token;
+        console.log('Im in auth service: ', data.token);
         this.saveToken(token);
-        
+
         return data;
       }), catchError(this.handleError));
   }

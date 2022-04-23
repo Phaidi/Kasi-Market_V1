@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { Food } from 'src/app/models/food.model';
-import { FoodService } from 'src/app/services/food.service';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
 
 @Component({
@@ -16,15 +15,17 @@ export class ListingPage implements OnInit {
   foods: Food[] = [];
   tempF: Food[] = [];
 
+  data: any;
+
   constructor(private itermService: ItermService, private router: Router) {
     this.getCategories();
     this.getAllIterms();
-  
+
   }
 
   ngOnInit() {
-    
-      
+
+
   }
 
   search(data){
@@ -43,7 +44,7 @@ export class ListingPage implements OnInit {
 
     this.itermService.getAllIterms().subscribe({
       next: (data: any) => {
-        console.log('Sign in data:',data.iterms)
+        console.log('Sign in data:',data.iterms);
         this.foods= data.iterms;
         this.tempF = this.foods;
 
@@ -51,12 +52,12 @@ export class ListingPage implements OnInit {
       error: err => {
         // this.errors[0] = err.message;
       }
-    })
+    });
   }
-  
+
   getCategories() {
-    
-   
+
+
       this.categories = [
         {
           id: 1,
@@ -83,11 +84,21 @@ export class ListingPage implements OnInit {
           active: false
         },
       ];
-    
+
   }
 
   goToDetailPage(id: number){
     this.router.navigate(['detail', id]);
+  }
+
+  ionViewWillEnter() {
+    setTimeout(() => {
+      this.data = {
+        heading: 'Normal text',
+        para1: 'Lorem ipsum dolor sit amet, consectetur',
+        para2: 'adipiscing elit.'
+      };
+    }, 5000);
   }
 
 }
