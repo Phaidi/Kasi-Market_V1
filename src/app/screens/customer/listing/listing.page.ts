@@ -17,7 +17,9 @@ export class ListingPage implements OnInit {
 
   data: any;
 
-  constructor(private itermService: ItermService, private router: Router) {
+  constructor(private itermService: ItermService,
+     private router: Router) {
+
     this.getCategories();
     this.getAllIterms();
 

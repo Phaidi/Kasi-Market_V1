@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { User1 } from '../../models/user1';
+import { User1 } from '../../../models/user1';
 
 @Component({
   selector: 'app-login',
@@ -22,20 +22,22 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    this.authService.logIn(this.logForm).subscribe({
-      next: data => {
-        console.log('Log in data:',data);
-        this.errors = [];
+    // this.authService.logIn(this.logForm).subscribe({
+    //   next: data => {
+    //     console.log('Log in data:',data);
+    //     this.errors = [];
 
-        this.presentLoading();
+    //     this.presentLoading();
 
-        this.router.navigate(['/home/listing']);
+    //     this.router.navigate(['/home/listing']);
 
-      },
-      error: err => {
-        this.errors[0] = err.message;
-      }
-    });
+    //   },
+    //   error: err => {
+    //     this.errors[0] = err.message;
+    //   }
+    // });
+    this.presentLoading();
+
   }
 
   async presentLoading() {

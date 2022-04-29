@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./screens/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./screens/general/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,36 +13,61 @@ const routes: Routes = [
   },
   {
     path: 'listing',
-    loadChildren: () => import('./screens/listing/listing.module').then( m => m.ListingPageModule)
+    loadChildren: () => import('./screens/customer/listing/listing.module').then( m => m.ListingPageModule)
   },
   {
     path: 'detail/:id',
-    loadChildren: () => import('./screens/detail/detail.module').then( m => m.DetailPageModule)
+    loadChildren: () => import('./screens/customer/detail/detail.module').then( m => m.DetailPageModule)
   },
   {
     path: 'cart',
-    loadChildren: () => import('./screens/cart/cart.module').then( m => m.CartPageModule)
+    loadChildren: () => import('./screens/customer/cart/cart.module').then( m => m.CartPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./screens/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./screens/general/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'signup',
-    loadChildren: () => import('./screens/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./screens/general/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
     path: 'address',
-    loadChildren: () => import('./screens/address/address.module').then( m => m.AddressPageModule)
+    loadChildren: () => import('./screens/customer/address/address.module').then( m => m.AddressPageModule)
   },
   {
     path: 'deliveries',
-    loadChildren: () => import('./screens/deliveries/deliveries.module').then( m => m.DeliveriesPageModule)
+    loadChildren: () => import('./screens/customer/deliveries/deliveries.module').then( m => m.DeliveriesPageModule)
   },
   {
     path: 'payments',
-    loadChildren: () => import('./screens/payments/payments.module').then( m => m.PaymentsPageModule)
+    loadChildren: () => import('./screens/customer/payments/payments.module').then( m => m.PaymentsPageModule)
   },
+  {
+    path: 'vdash',
+    loadChildren: () => import('./screens/vendor/vdash/vdash.module').then( m => m.VdashPageModule)
+  },  {
+    path: 'vlist',
+    loadChildren: () => import('./screens/vendor/vlist/vlist.module').then( m => m.VlistPageModule)
+  },
+  {
+    path: 'vuploads',
+    loadChildren: () => import('./screens/vendor/vuploads/vuploads.module').then( m => m.VuploadsPageModule)
+  },
+  {
+    path: 'vcrud',
+    loadChildren: () => import('./screens/vendor/vcrud/vcrud.module').then( m => m.VcrudPageModule)
+  },
+  {
+    path: 'vstats',
+    loadChildren: () => import('./screens/vendor/vstats/vstats.module').then( m => m.VstatsPageModule)
+  },
+  {
+    path: 'vdetail',
+    loadChildren: () => import('./screens/vendor/vdetail/vdetail.module').then( m => m.VdetailPageModule)
+  },
+
+
 
 ];
 @NgModule({
