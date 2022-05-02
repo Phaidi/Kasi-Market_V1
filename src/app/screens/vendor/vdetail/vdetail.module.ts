@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { VdetailPageRoutingModule } from './vdetail-routing.module';
 
 import { VdetailPage } from './vdetail.page';
+import { BadgeModule } from 'src/app/components/badge/badge.module';
+import { ButtonModule } from 'src/app/components/button/button.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VdetailPageRoutingModule
+    VdetailPageRoutingModule,
+    BadgeModule,
+    ButtonModule
   ],
   declarations: [VdetailPage]
 })
