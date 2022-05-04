@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Food } from 'src/app/models/food.model';
+import { Upload } from 'src/app/models/upload';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
 
@@ -10,6 +11,8 @@ import { ItermService } from 'src/app/services/iterm/iterm.service';
   styleUrls: ['./vdetail.page.scss'],
 })
 export class VdetailPage implements OnInit {
+
+  upForm: Upload = new Upload();
 
   id: number;
   food: Food;

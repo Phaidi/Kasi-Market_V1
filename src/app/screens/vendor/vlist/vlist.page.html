@@ -23,8 +23,18 @@
 </ion-content> -->
 
 <ion-content>
-  <br><br>
-  <h1 class="list-header">Your Item list</h1>
+
+  <div class="input">
+    <input
+      #searchQ
+      (keyup)="search($event)"
+      class="searchbar-search-icon"
+      placeholder="search"
+      name="searchQ"/>
+
+      <h1 class="list-header">Your Item list</h1>
+  </div>
+  
 
   <div class="food-list">
     <div class="card">
@@ -35,10 +45,58 @@
         <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
 
         <ion-buttons>
-          <ion-button>
-            <ion-icon slot="icon-only" name="add"></ion-icon>
+          <ion-button routerLink="/vdetail">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
           </ion-button>
           <ion-button>
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+    <div class="card">
+      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
+
+      <div class="card-content">
+        <h3 class="title">TITTLE!!!</h3>
+        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
+
+        <ion-buttons>
+          <ion-button routerLink="/vdetail">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+    <div class="card">
+      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
+
+      <div class="card-content">
+        <h3 class="title">TITTLE!!!</h3>
+        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
+
+        <ion-buttons>
+          <ion-button routerLink="/vdetail">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+    <div class="card">
+      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
+
+      <div class="card-content">
+        <h3 class="title">TITTLE!!!</h3>
+        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
+
+        <ion-buttons>
+          <ion-button routerLink="/vdetail">
             <ion-icon slot="icon-only" name="create-outline"></ion-icon>
           </ion-button>
           <ion-button>

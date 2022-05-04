@@ -1,38 +1,72 @@
 <ion-content>
-  <div class="header">
-    <ion-buttons>
-      <ion-button routerLink="/home/listing">
-        <ion-icon slot="icon-only" color="light" name="arrow-back-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons>
-      <ion-button>
-        <ion-icon slot="icon-only" color="light" name="heart-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </div>
-  <div class="card">
-    <div class="image">
-      <ion-img [src]="food.image"></ion-img>
+  <form #f="ngForm">
+    <div class="header">
+      <ion-buttons>
+        <ion-button routerLink="/vdash/vlist">
+          <ion-icon slot="icon-only" color="light" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons>
+        <ion-button>
+          <ion-icon slot="icon-only" color="light" name="heart-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </div>
-
-    <div class="card-content">
-      <div class="card-title">
-        <h1 class="ion-no-margin">{{food.title}}</h1>
-        <p class="i-no-margin"><sup>R</sup>{{food.price | number: '1.2'}}</p>
+    <div class="card">
+      <div class="image">
+        <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
       </div>
-    </div>
 
-    <div class="rates">
-      <app-badge icon="time-outline" text="30m"></app-badge>
-      <app-badge icon="star-outline" text="4.5"></app-badge>
-    </div>
+      <div class="card-content">
+        <div class="card-title">
 
-    <div class="about">
-      <h1>About</h1>
-      <p>{{food.description}}</p>
-    </div>
+          <div class="form-input">
+            <ion-icon name="leaf-outline"></ion-icon>
+            <ion-item>
+              <ion-label position="floating">Item name</ion-label>
+              <ion-input type="text"
+              #fName="ngModel"
+                type="text"
+                name="fName"
+                [(ngModel)]="upForm.fName">
+            </ion-input>
+            </ion-item>
+          </div>
+          <div class="form-input">
+            <ion-icon name="cash-outline"></ion-icon>
+            <ion-item>
+              <ion-label position="floating">Price</ion-label>
+              <ion-input type="text"
+              #fPrice="ngModel"
+                type="text"
+                name="fPrice"
+                [(ngModel)]="upForm.fPrice">
+            </ion-input>
+            </ion-item>
+          </div>
 
-    <app-button (click)="addItemToCart()" >ADD TO CART</app-button>
-  </div>
+        </div>
+      </div>
+
+      <div class="rates">
+        <app-badge icon="time-outline" text="30m"></app-badge>
+        <app-badge icon="star-outline" text="4.5"></app-badge>
+      </div>
+
+      <div class="form-input">
+        <ion-icon name="albums-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input type="text"
+          #fDescription="ngModel"
+            type="text"
+            name="fDescription"
+            [(ngModel)]="upForm.fDescription">
+        </ion-input>
+        </ion-item>
+      </div>
+
+      <app-button>Update Item</app-button>
+    </div>
+  </form>
 </ion-content>
