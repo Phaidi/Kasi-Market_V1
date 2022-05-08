@@ -2,11 +2,13 @@
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { loadingController } from '@ionic/core';
+import { LoadToastService } from 'src/app/helpers/toastHandler';
 
 @Component({
   selector: 'app-cart',
@@ -27,23 +29,28 @@ export class CartPage implements OnInit {
   
 
 
-  constructor(private cartService: CartService,
-    private alertCtrl: AlertController) {
+  constructor(
+    private cartService: CartService,
+    private alertCtrl: AlertController, 
+    private loadCrt: LoadingController,
+    private toast: LoadToastService) {
     // this.tempF = this.foods;
-    this.getCart();
+    // this.getCart();
   }
 
   ngOnInit() {
     // this.cartItems$ = this.cartService.getCart()
-    // this.getCart();
+    this.getCart();
     // this.totalAmount$ = this.cartService.getTotalAmount();
   }
 
   getCart(){
     this.cartService.getCart().subscribe({
       next: (data: any) => {
+        this.toast.presentLoading()
         console.log('Im in cart data :',data.carts)
         // this.errors = [];
+      
 
         this.myCart = data.carts;
 
@@ -74,6 +81,7 @@ export class CartPage implements OnInit {
     this.cartService.changeQty(quantity, id).subscribe({
       next: (data: any) => {
         console.log(data)
+        this.getCart();
       },
       error: err => {
         console.log(err)
@@ -93,6 +101,7 @@ export class CartPage implements OnInit {
           handler: () => this.cartService.removeItem(item.id).subscribe({
             next: (data: any) =>{
               console.log('Hello from delete',data)
+              this.getCart();
              
       
             },

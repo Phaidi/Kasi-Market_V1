@@ -3,6 +3,7 @@ import { ToastController } from '@ionic/angular';
 import { CartItem } from '../../models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
 import { CartService } from 'src/app/services/cart/cart.service';
+import { LoadToastService } from 'src/app/helpers/toastHandler';
 
 @Component({
   selector: 'app-food-card',
@@ -13,33 +14,26 @@ export class FoodCardComponent {
 
   @Input() item: Food;
 
-  @Output() clicked = new EventEmitter();
-
-  constructor(private cartService: CartService,
-    private toastCtrl: ToastController){};
+  constructor(
+    private cartService: CartService,
+    private toast: LoadToastService){};
 
   addItemToCart() {
 
     this.cartService.addToCart(this.item.id).subscribe({
       next: (data: any) =>{
 
-        this.presentToast();
+      
+        this.toast.logToast(data.message);
       },
       error: err =>{
-        console.log(err);
+        console.log("hello ",err.message);
+
+       
+        this.toast.logToast(err.message);
       }
     });
 
   }
 
-  async presentToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Item added to the cart!!',
-      mode: 'ios',
-      duration: 1000,
-      position: 'top',
-    });
-
-    toast.present();
-  }
 }

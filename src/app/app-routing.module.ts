@@ -46,7 +46,8 @@ const routes: Routes = [
   {
     path: 'vdash',
     loadChildren: () => import('./screens/vendor/vdash/vdash.module').then( m => m.VdashPageModule)
-  },  {
+  },
+  {
     path: 'vlist',
     loadChildren: () => import('./screens/vendor/vlist/vlist.module').then( m => m.VlistPageModule)
   },

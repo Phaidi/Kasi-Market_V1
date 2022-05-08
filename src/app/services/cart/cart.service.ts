@@ -21,7 +21,7 @@ export class CartService {
 
   private handleError(error: HttpErrorResponse) {
 
-    let errors = [{ status: 'Error', message: ' Ooops, someting went wrong!' }];
+    let errors: any = [{ status: 'Error', message: ' Ooops, someting went wrong!' }];
     let msg = ' Ooops, someting went wrong!';
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -31,13 +31,15 @@ export class CartService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
 
-      msg = error.error.message ? error.error.message:error.error.text;
+      errors.message = error.error.message ? error.error.message:error.error.text;
         errors = error.error;
+        
     }
     // Return an observable with a user-facing error message.
-    // return throwError(errors);
-    console.log('service error:',error.error);
-    return throwError(() => new Error(msg));
+    return throwError(errors);
+    // console.log('service error:', new Error(msg));
+    
+    // return throwError(() => new Error(msg))
   }
 
 
@@ -55,9 +57,12 @@ export class CartService {
   // }
 
   addToCart(id: Number) {
-    return this.http.post(`${this.URL}/`,{itermId: id})
+    return this.http.post(`${this.URL}/`,{itemId: id})
     .pipe(
-      map(data => data), catchError(this.handleError));
+      map(data => {
+        console.log('Im in cart service: ', data);
+        return data;
+      }), catchError(this.handleError));
   }
 
   // removeItem(id: number) {

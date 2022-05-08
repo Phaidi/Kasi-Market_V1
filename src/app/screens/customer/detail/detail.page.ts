@@ -13,7 +13,7 @@ import { ItermService } from 'src/app/services/iterm/iterm.service';
 })
 export class DetailPage implements OnInit {
   id: number;
-  food: Food;
+  food: any;
 
   constructor(private activatedRoute: ActivatedRoute,
     private cartService: CartService,
@@ -24,16 +24,22 @@ export class DetailPage implements OnInit {
   };
 
   ngOnInit() {
-    // this.getIterm()
+    
+    this.getIterm()
   }
 
   getIterm(){
-    console.log(this.id);
-
+    console.log(this.id, );
+    this.activatedRoute.params.subscribe(
+      (params: {id: string}) => {
+        this.id = +params.id;
+        console.log(this.id);
+      }
+    );
     this.itermService.getIterm(this.id).subscribe({
       next: (data: any) =>{
-        console.log('Hello from details',data.iterm);
-        this.food = data.iterm;
+        console.log('Hello from details',data.item);
+        this.food = data.item;
 
       },
       error: err =>{
