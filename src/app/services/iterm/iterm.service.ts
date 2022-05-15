@@ -11,7 +11,7 @@ import { Food } from 'src/app/models/food.model';
 })
 export class ItermService {
 
-  URL: string = `http://localhost:3000/api/v1/iterms`
+  URL: string = `http://localhost:3000/api/v1/items`
 
   constructor(private http:HttpClient) { }
 
@@ -36,7 +36,7 @@ export class ItermService {
     return throwError(() => new Error(msg))
   }
 
-  public getAllIterms(): Observable<Food[]> {
+  public getAllItems(): Observable<Food[]> {
     return this.http.get<Food[]>(`${this.URL}/`)
       .pipe(
         map(data => {

@@ -16,27 +16,36 @@ export class LoginPage implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              public loadingController: LoadingController) { }
+              public loadingController: LoadingController,
+              private loadCrt: LoadingController) { }
 
   ngOnInit() {
   }
 
   login(){
-    // this.authService.logIn(this.logForm).subscribe({
-    //   next: data => {
-    //     console.log('Log in data:',data);
-    //     this.errors = [];
+    this.authService.logIn(this.logForm).subscribe({
+      next: data => {
+        console.log('Log in data:',data);
+        this.errors = [];
 
-    //     this.presentLoading();
+        const userType = this.authService.userType
+        console.log(userType)
+        this.presentLoading();
 
-    //     this.router.navigate(['/home/listing']);
+        // this.loadCrt.
 
-    //   },
-    //   error: err => {
-    //     this.errors[0] = err.message;
-    //   }
-    // });
-    this.presentLoading();
+        if(userType == 'user'){
+          this.router.navigate(['/home/listing']);
+        } if(userType == 'vendor'){
+          this.router.navigate(['/vdash/vlist']);
+        }
+
+      },
+      error: err => {
+        this.errors[0] = err.message;
+      }
+    });
+    
 
   }
 

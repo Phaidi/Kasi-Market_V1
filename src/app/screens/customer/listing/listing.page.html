@@ -9,12 +9,12 @@
   <!--<app-searchbar></app-searchbar>-->
 
   <div>
-    <div class="categories">
+    <!-- <div class="categories">
       <app-category-item
         *ngFor="let item of categories"
         [item]="item"
       ></app-category-item>
-    </div>
+    </div> -->
 
     <div class="input">
       <input
@@ -32,7 +32,7 @@
       <app-food-card
         *ngFor="let food of foods"
         [item]="food"
-        (clicked)="goToDetailPage(food.id)"
+        routerLink="/detail/{{food.id}}"
       ></app-food-card>
     </div>
   </div>

@@ -1,17 +1,8 @@
-.empty-cart {
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #c7c7c7;
-
-    ion-icon {
-        font-size: 8rem;
-    }
-
-    p {
-        font-size: 1.8rem;
-        text-align: center;
-    }
-}
+ion-content {
+    --background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1) ),
+    url("/assets/2.jpg") no-repeat center center / cover;
+  }
+  
+  h3 {
+    padding: 10px;
+  }

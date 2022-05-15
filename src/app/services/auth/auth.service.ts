@@ -19,7 +19,7 @@ class DecodedToken {
   iat = 0;
   name = '';
   id = 0;
-  userType = 0;
+  userType = '';
   photo = '';
 }
 
@@ -141,6 +141,10 @@ export class AuthService {
 
   get userPhoto(): string {
     return this.decodedToken.photo;
+  }
+
+  get userType(): string {
+    return this.decodedToken.userType;
   }
 
   get isAuthenticated(): boolean {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadToastService } from 'src/app/helpers/toastHandler';
 import { Category } from 'src/app/models/category.model';
 import { Food } from 'src/app/models/food.model';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
@@ -17,17 +18,16 @@ export class ListingPage implements OnInit {
 
   data: any;
 
-  constructor(private itermService: ItermService,
-     private router: Router) {
-
-    this.getCategories();
-    this.getAllIterms();
+  constructor(
+    private itermService: ItermService,
+    private router: Router,
+    private toast: LoadToastService) {
 
   }
 
   ngOnInit() {
 
-
+    this.getAllItems()
   }
 
   search(data){
@@ -42,12 +42,13 @@ export class ListingPage implements OnInit {
 
   }
 
-  getAllIterms(){
+  getAllItems(){
 
-    this.itermService.getAllIterms().subscribe({
+    this.itermService.getAllItems().subscribe({
       next: (data: any) => {
-        console.log('Sign in data:',data.iterms);
-        this.foods= data.iterms;
+        this.toast.presentLoading()
+        console.log('Sign in data:',data.items);
+        this.foods= data.items;
         this.tempF = this.foods;
 
       },
@@ -57,40 +58,11 @@ export class ListingPage implements OnInit {
     });
   }
 
-  getCategories() {
 
 
-      this.categories = [
-        {
-          id: 1,
-          label: 'All',
-          image: 'assets/icon/1.png',
-          active: true
-        },
-        {
-          id: 2,
-          label: 'Hardware',
-          image: 'assets/icon/2.png',
-          active: false
-        },
-        {
-          id: 3,
-          label: 'Appliances',
-          image: 'assets/icon/3.png',
-          active: false
-        },
-        {
-          id: 4,
-          label: 'Utilities',
-          image: 'assets/icon/4.png',
-          active: false
-        },
-      ];
-
-  }
-
-  goToDetailPage(id: number){
-    this.router.navigate(['detail', id]);
+  goToDetailPage(id){
+    //console.log(' data:',id);
+     this.router.navigate(['/detail/'+id]);
   }
 
   ionViewWillEnter() {
