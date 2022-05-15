@@ -15,3 +15,17 @@
         text-align: center;
     }
 }
+
+.action-button {
+    text-align: center;
+    .login-button {
+        --background: #f9b801;
+        width: 100%;
+        font-weight: bold;
+    }
+    ion-title{
+        margin-top: 15px;
+        font-size: 2rem;
+        color: #7b7b7b;
+    }
+}

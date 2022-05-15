@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Vendor } from '../../../models/vendor';
 
 @Component({
   selector: 'app-vcrud',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VcrudPage implements OnInit {
 
+  vForm: Vendor = new Vendor();
   constructor() { }
 
   ngOnInit() {

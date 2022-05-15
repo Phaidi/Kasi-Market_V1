@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="action-button">
+  <ion-toolbar class="login-button">
     <ion-title>profile</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -104,13 +104,13 @@
       <ion-label color="light">Profile</ion-label>
       <ion-icon color="light" name="person"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="missed">
-      <ion-label color="light">Item Two</ion-label>
-      <ion-icon color="light" name="heart"></ion-icon>
+    <ion-segment-button value="orders">
+      <ion-label color="light">Orders</ion-label>
+      <ion-icon color="light" name="document-text"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="contact">
-      <ion-label color="light">Item Three</ion-label>
-      <ion-icon color="light" name="pin"></ion-icon>
+    <ion-segment-button value="deliveries">
+      <ion-label color="light">Deliveries</ion-label>
+      <ion-icon color="light" name="airplane"></ion-icon>
     </ion-segment-button>
   </ion-segment>
 
@@ -173,12 +173,33 @@
     </form>
   </div>
 
-  <div *ngIf="selectTabs === 'missed'">
-    <h3>Missed</h3>
+  <div *ngIf="selectTabs === 'orders'">
+    <h3>Your Orders</h3>
+    <ion-card>
+      <ion-item>
+        <h1>< Order Name ></h1>
+      </ion-item>
+    
+      <ion-card-content>
+        <p>< Order Date ></p>
+        <p>< Order Amount ></p>
+      </ion-card-content>
+    </ion-card>
   </div>
 
-  <div *ngIf="selectTabs === 'contact'">
-    <h3>Contact</h3>
+  <div *ngIf="selectTabs === 'deliveries'">
+    <h3>Your Deliveries</h3>
+    <ion-card>
+      <ion-item>
+        <h1>< Order Name ></h1>
+      </ion-item>
+    
+      <ion-card-content>
+        <p>< Order Date ></p>
+        <p>< Order Amount ></p>
+        <p>< Delivery Date ></p>
+      </ion-card-content>
+    </ion-card>
   </div>
 
 </ion-content>

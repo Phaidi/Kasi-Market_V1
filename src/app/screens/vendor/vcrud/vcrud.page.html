@@ -1,9 +1,133 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="head-button">
+  <ion-toolbar class="head2-button">
     <ion-title>vcrud</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form  #f="ngForm">
+  <div class="login-section ion-padding">
+    <div class="heading ion-padding">
+    </div><br><br><br><br>
+    <div class="login-form ion-padding">
+      <div class="form-input">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Business Name</ion-label>
+          <ion-input type="text"
+          #vName="ngModel"
+            type="text"
+            name="vName"
+            [(ngModel)]="vForm.vName"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="vName.invalid && (vName.dirty || vName.touched)">
+          <div *ngIf="vName.errors?.required">Business name is required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="cash-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Tax Number</ion-label>
+          <ion-input type="text"
+          #vVat="ngModel"
+            type="text"
+            name="vVat"
+            [(ngModel)]="vForm.vVat"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="vVat.invalid && (vVat.dirty || vVat.touched)">
+          <div *ngIf="vVat.errors?.required">Tax Number is required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="albums-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text"
+          #vEmail="ngModel"
+            type="text"
+            name="vEmail"
+            [(ngModel)]="vForm.vEmail"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="vEmail.invalid && (vEmail.dirty || vEmail.touched)">
+          <div *ngIf="vEmail.errors?.required">Email is required</div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="albums-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Website Link (optional)</ion-label>
+          <ion-input type="text"
+          #vWeb="ngModel"
+            type="text"
+            name="vWeb"
+            [(ngModel)]="vForm.vWeb">
+        </ion-input>
+        </ion-item>
+      </div>
+      <div class="form-input">
+        <ion-icon name="albums-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="text"
+          #vPassword="ngModel"
+            type="text"
+            name="vPassword"
+            minlength="8"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            [(ngModel)]="vForm.vPassword"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="vPassword.invalid && (vPassword.dirty || vPassword.touched)">
+          <div *ngIf="vPassword.errors?.required">Province is required</div>
+          <div *ngIf="vPassword.errors?.minlength">Invalid minLength</div>
+          <div *ngIf="vPassword.errors?.pattern">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
+        </div>
+      </div>
+      <div class="form-input">
+        <ion-icon name="albums-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input type="text"
+          #vConPassword="ngModel"
+            type="text"
+            name="vConPassword"
+            minlength="8"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            [(ngModel)]="vForm.vConPassword"
+            required>
+        </ion-input>
+        </ion-item>
+        <div class="alert alert-danger" *ngIf="vConPassword.invalid && (vConPassword.dirty || vConPassword.touched)">
+          <div *ngIf="vConPassword.errors?.required">Province is required</div>
+          <div *ngIf="vConPassword.errors?.minlength">Invalid minLength</div>
+          <div *ngIf="vConPassword.errors?.pattern">
+            <h3>Password must contain the following:</h3>
+            <p id="letter1" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital1" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number1" class="invalid">A <b>number</b></p>
+            <p id="length1" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="action-button ion-padding">
+      <ion-button size="large" shape="round" class="login-button" [disabled]="!f.valid">Save</ion-button>
+    </div>
 
+  </div>
+</form>
 </ion-content>

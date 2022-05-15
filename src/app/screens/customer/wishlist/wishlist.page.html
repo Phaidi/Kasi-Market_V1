@@ -1,12 +1,33 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="action-button">
+  <ion-toolbar class="login-button">
     <ion-title>wishlist</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content>
   <div class="empty-cart">
     <ion-icon name="heart-outline"></ion-icon>
     <p>Your wish-list page is coming soon!!!</p>
   </div>
+</ion-content> -->
+
+<ion-content>
+
+  <ion-list lines="none">
+   <ion-item-sliding>  <!-- *ngFor="let item of myCart" -->
+
+     <ion-item-options side="end">
+       <ion-item-option>  <!-- (click)="removeFromCart(item)" -->
+         <ion-icon name="trash-outline" size="large" color="danger"></ion-icon>
+       </ion-item-option>
+     </ion-item-options>
+   </ion-item-sliding>
+   
+  </ion-list>
+
+  <div class="empty-cart"> <!-- *ngIf="!(myCart|async).length" -->
+   <ion-icon name="heart-outline"></ion-icon>
+   <p>Your wish-list is currently empty!!</p>
+ </div>
+  
 </ion-content>

@@ -96,8 +96,16 @@ ion-content {
     }
   }
 
-  ion-title{
-    margin-top: 15px;
-    font-size: 2rem;
-    color: #7b7b7b;
+  .head-button {
+    text-align: center;
+    .head2-button {
+        --background: #6b45bc;
+        width: 100%;
+        font-weight: bold;
+    }
+    ion-title{
+        margin-top: 15px;
+        font-size: 2rem;
+        color: #7b7b7b;
+    }
 }
