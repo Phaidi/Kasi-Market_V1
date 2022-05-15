@@ -4,6 +4,7 @@ import { CartItem } from '../../models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { LoadToastService } from 'src/app/helpers/toastHandler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-food-card',
@@ -16,7 +17,13 @@ export class FoodCardComponent {
 
   constructor(
     private cartService: CartService,
+    private router: Router,
     private toast: LoadToastService){};
+
+    navigate(id){
+      console.log("this is your id",id)
+      this.router.navigate([`/detail/`+id]);
+    }
 
   addItemToCart() {
 

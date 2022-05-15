@@ -1,5 +1,5 @@
 <div class="card">
-  <ion-img [src]="item.image"></ion-img>
+  <ion-img (click)="navigate(item.id)" [src]="item.image"></ion-img>
 
   <div class="card-content">
     <h3 class="title">{{item.title}}</h3>

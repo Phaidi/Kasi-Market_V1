@@ -5,6 +5,7 @@ import { CartItem } from 'src/app/models/cart-item.model';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ToastController } from '@ionic/angular';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
+import { LoadToastService } from 'src/app/helpers/toastHandler';
 
 @Component({
   selector: 'app-detail',
@@ -13,11 +14,13 @@ import { ItermService } from 'src/app/services/iterm/iterm.service';
 })
 export class DetailPage implements OnInit {
   id: number;
-  food: any;
+  food: Food = {} as Food;
+
 
   constructor(private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private itermService: ItermService,
+    private toast: LoadToastService,
     private toastCtrl: ToastController)
   {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
@@ -30,15 +33,16 @@ export class DetailPage implements OnInit {
 
   getIterm(){
     console.log(this.id, );
-    this.activatedRoute.params.subscribe(
-      (params: {id: string}) => {
-        this.id = +params.id;
-        console.log(this.id);
-      }
-    );
+    // this.activatedRoute.params.subscribe(
+    //   (params: {id: string}) => {
+    //     this.id = +params.id;
+    //     console.log(this.id);
+    //   }
+    // );
+    this.toast.presentLoading()
     this.itermService.getIterm(this.id).subscribe({
       next: (data: any) =>{
-        console.log('Hello from details',data.item);
+        console.log('Hello from details',data.item.id);
         this.food = data.item;
 
       },

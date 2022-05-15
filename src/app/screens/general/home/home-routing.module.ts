@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../../customer/wishlist/wishlist.module').then( m => m.WishlistPageModule)
       },
       {
+        path: 'login',
+        loadChildren: () => import('../../general/login/login.module').then( m => m.LoginPageModule)
+      },
+      {
         path: '',
         redirectTo: 'listing',
         pathMatch: 'full'

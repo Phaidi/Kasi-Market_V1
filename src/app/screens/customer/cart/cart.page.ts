@@ -20,6 +20,7 @@ export class CartPage implements OnInit {
   // cartItems$: Observable<CartItem[]>;
   // totalAmount$: Observable<number>;
   myCart: any[]
+  sum: any = 0;
 
   // foods: any[] = [];
   // codeItems: any;
@@ -48,8 +49,12 @@ export class CartPage implements OnInit {
     this.cartService.getCart().subscribe({
       next: (data: any) => {
         this.toast.presentLoading()
+
+        this.sum = 0;
+        data.carts.forEach(a => this.sum += a.item.price * a.quantity);
         console.log('Im in cart data :',data.carts)
         // this.errors = [];
+        
       
 
         this.myCart = data.carts;

@@ -1,16 +1,24 @@
-<ion-tabs>
+<ion-tabs >
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="listing">
       <ion-icon name="apps-outline"></ion-icon>
     </ion-tab-button>
-    <ion-tab-button tab="profile">
-      <ion-icon name="person-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="wishlist">
-      <ion-icon name="heart-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="cart">
-      <ion-icon name="cart-outline"></ion-icon>
-    </ion-tab-button>
+    <ng-container *ngIf="auth.isAuthenticated else notAuthMenu">
+      <ion-tab-button  tab="profile">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="wishlist">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-tab-button>
+    </ng-container>
+    
+    <ng-template #notAuthMenu>
+      <ion-tab-button tab="login">
+        <ion-icon name="log-in-outline"></ion-icon>
+      </ion-tab-button>
+    </ng-template>
   </ion-tab-bar>
 </ion-tabs>
