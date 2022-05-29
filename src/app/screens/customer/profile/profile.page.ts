@@ -28,7 +28,7 @@ export class ProfilePage implements OnInit {
 
   getMe(){
     this.toast.presentLoading()
-    this.userService.getMyWishes().subscribe({
+    this.userService.getMe().subscribe({
       next: (data: any) =>{
         console.log('Hello from my details',data.me);
         this.data = data.me;
