@@ -25,6 +25,14 @@ const routes: Routes = [
         loadChildren: () => import('../../vendor/vstats/vstats.module').then( m => m.VstatsPageModule)
       },
       {
+        path: 'vttsold',
+        loadChildren: () => import('../../vendor/vttsold/vttsold.module').then( m => m.VttsoldPageModule)
+      },
+      {
+        path: 'vttamount',
+        loadChildren: () => import('../../vendor/vttamount/vttamount.module').then( m => m.VttamountPageModule)
+      },
+      {
         path: '',
         redirectTo: 'vdash/vlist',
         pathMatch: 'full'

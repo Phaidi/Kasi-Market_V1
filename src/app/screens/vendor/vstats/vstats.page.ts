@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vstats',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VstatsPage implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
+  }
+
+  sold() {
+    this.router.navigate([`/vttsold`]);
   }
 
 }
