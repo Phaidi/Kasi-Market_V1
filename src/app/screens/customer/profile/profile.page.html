@@ -153,8 +153,28 @@
           <ion-col size="10">
             <ion-item lines="full">
               <ion-label position="floating">PASSWORD</ion-label>
-              <ion-input></ion-input>
+          <ion-input type="password"
+          #password="ngModel"
+          type="password" 
+          minlength="5"
+          match="checkP()"
+          name="password" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          [(ngModel)]="regForm.password"
+          required>
+        </ion-input>
             </ion-item>
+            <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div *ngIf="password.errors?.required">Password required</div>
+              <div *ngIf="password.errors?.minlength">Invalid minLength</div>
+              <div *ngIf="password.errors?.pattern">
+                <h3>Password must contain the following:</h3>
+                <p id="letter1" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital1" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number1" class="invalid">A <b>number</b></p>
+                <p id="length1" class="invalid">Minimum <b>8 characters</b></p>
+              </div>
+            </div>
           </ion-col>
         </ion-row>
         <br>
@@ -162,13 +182,32 @@
           <ion-col size="10">
             <ion-item lines="full">
               <ion-label position="floating">CONFIRM PASSWORD</ion-label>
-              <ion-input></ion-input>
+          <ion-input type="password"
+          #conPassword="ngModel"
+          type="password" 
+          minlength="5"
+          name="conPassword" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          [(ngModel)]="regForm.conPassword"
+          required>
+          </ion-input>
             </ion-item>
+            <div class="alert alert-danger" *ngIf="conPassword.invalid && (conPassword.dirty || conPassword.touched)">
+              <div *ngIf="conPassword.errors?.required">Password required</div>
+              <div *ngIf="conPassword.errors?.minlength">Invalid minLength</div>
+              <div *ngIf="conPassword.errors?.pattern">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+              </div>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
       <br><br><br>
-      <ion-button size="large" expand="full" fill="outline" shape="round">
+      <ion-button [disabled]="!f.valid" size="large" expand="full" fill="outline" shape="round">
         UPDATE PROFILE
       </ion-button>
     </form>

@@ -9,7 +9,7 @@ import { User1 } from '../../../models/user1';
 })
 export class ProfilePage implements OnInit {
 
-  profForm: User1 = new User1;
+  regForm: User1 = new User1;
 
   selectTabs = 'profile';
 
