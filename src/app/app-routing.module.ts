@@ -66,7 +66,15 @@ const routes: Routes = [
   {
     path: 'vdetail',
     loadChildren: () => import('./screens/vendor/vdetail/vdetail.module').then( m => m.VdetailPageModule)
+  },  {
+    path: 'vttsold',
+    loadChildren: () => import('./screens/vendor/vttsold/vttsold.module').then( m => m.VttsoldPageModule)
   },
+  {
+    path: 'vttamount',
+    loadChildren: () => import('./screens/vendor/vttamount/vttamount.module').then( m => m.VttamountPageModule)
+  },
+
 
 
 

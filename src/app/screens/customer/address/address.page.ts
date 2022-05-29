@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Address } from '../../../models/address';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-address',
@@ -13,6 +14,16 @@ export class AddressPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // this.getCurrentLocation();
   }
+
+  // async getCurrentLocation() {
+  //   try {
+  //     const coordinates = await Geolocation.getCurrentPosition();
+  //     console.log('Current location: ', coordinates);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 
 }
