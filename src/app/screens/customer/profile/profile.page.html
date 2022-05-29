@@ -112,6 +112,10 @@
       <ion-label color="light">Deliveries</ion-label>
       <ion-icon color="light" name="airplane"></ion-icon>
     </ion-segment-button>
+    <ion-segment-button value="supplier">
+      <ion-label color="light">Supplier</ion-label>
+      <ion-icon color="light" name="terminal-outline"></ion-icon>
+    </ion-segment-button>
   </ion-segment>
 
   <div *ngIf="selectTabs === 'profile'">
@@ -124,8 +128,7 @@
         <ion-row>
           <ion-col size="10">
             <ion-item lines="full">
-              <ion-label position="stacked">NAME</ion-label>
-              <ion-input readonly>{{name}}</ion-input>
+              <ion-input value="{{name}}" disabled readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -133,8 +136,7 @@
         <ion-row>
           <ion-col size="10">
             <ion-item lines="full">
-              <ion-label position="stacked">SURNAME</ion-label>
-              <ion-input readonly>{{lname}}</ion-input>
+              <ion-input value="{{lname}}" disabled readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -142,8 +144,7 @@
         <ion-row>
           <ion-col size="10">
             <ion-item lines="full">
-              <ion-label position="stacked">EMAIL</ion-label>
-              <ion-input readonly>{{email}}</ion-input>
+              <ion-input value="{{email}}" disabled readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -200,6 +201,39 @@
         <p>< Delivery Date ></p>
       </ion-card-content>
     </ion-card>
+  </div>
+
+  <div *ngIf="selectTabs === 'supplier'">
+    <div>
+      <h3>Want to be a supplier?</h3>
+    </div>
+
+    <form  #f="ngForm">
+      <ion-grid>
+        
+        <ion-row>
+          <ion-col size="10">
+            <ion-item lines="full">
+              <ion-label position="floating">STORE NAME</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col size="10">
+            <ion-item lines="full">
+              <ion-label position="floating">STORE DESCRIPTION</ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <br><br><br>
+      <ion-button size="large" expand="full" fill="outline" shape="round">
+        SUBMIT REQUEST
+      </ion-button>
+    </form>
   </div>
 
 </ion-content>
