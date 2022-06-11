@@ -6,6 +6,7 @@ import { CartService } from 'src/app/services/cart/cart.service';
 import { ToastController } from '@ionic/angular';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
 import { LoadToastService } from 'src/app/helpers/toastHandler';
+import { WishService } from 'src/app/services/wish/wish.service';
 
 @Component({
   selector: 'app-detail',
@@ -18,10 +19,10 @@ export class DetailPage implements OnInit {
 
 
   constructor(private activatedRoute: ActivatedRoute,
+    private wishService: WishService,
     private cartService: CartService,
     private itermService: ItermService,
-    private toast: LoadToastService,
-    private toastCtrl: ToastController)
+    private toast: LoadToastService,)
   {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
   };
@@ -53,32 +54,38 @@ export class DetailPage implements OnInit {
 
   }
 
+  makeWish(id: any){
+    console.log("hello", id)
+    this.toast.presentLoading()
+    this.wishService.makeWish({itemId:id}).subscribe({
+      next: (data: any) =>{
+        console.log('Hello from details',data.wish);
+        // this.presentToast('Item added to the Wishlist 😋!!');
+        this.toast.logToast('Item added to the Wishlist 😋!!')
+
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
+  }
+
   addItemToCart() {
 
     this.cartService.addToCart(this.id).subscribe({
       next: (data: any) =>{
         console.log('Hello from details',data);
 
-        this.presentToast();
+        this.toast.logToast('Item added to the cart!!');
       },
       error: err =>{
         console.log(err);
       }
     });
 
-    // this.cartService.addToCart(cartitem);
 
   }
 
-  async presentToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Item added to the cart!!',
-      mode: 'ios',
-      duration: 1000,
-      position: 'top',
-    });
 
-    toast.present();
-  }
 
 }
