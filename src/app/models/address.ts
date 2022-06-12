@@ -6,4 +6,5 @@ export class Address {
     province: string;
     city: string;
     zipCode: string;
+    dis: number;
 }

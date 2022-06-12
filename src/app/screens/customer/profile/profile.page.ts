@@ -13,6 +13,7 @@ import { LoadToastService } from 'src/app/helpers/toastHandler';
 export class ProfilePage implements OnInit {
 
   regForm: User1 = new User1;
+  upForm: User1 = new User1;
 
   selectTabs = 'profile';
   data: User1 = new User1;
@@ -24,6 +25,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.getMe()
+    this.regForm = new User1;
   }
 
   getMe(){
@@ -41,6 +43,35 @@ export class ProfilePage implements OnInit {
 
   }
 
+  changePassword(){
 
+    this.toast.presentLoading()
+    this.userService.upateAccount(this.regForm).subscribe({
+      next: (data: any) =>{
+        console.log('Hello from my details',data.me);
+        this.data = data.me;
+
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
+  }
+
+
+  requestVendorship(){
+
+
+    this.toast.presentLoading()
+    this.userService.requestVendorship(this.upForm).subscribe({
+      next: (data: any) =>{
+        
+        this.toast.logToast('Vendor request was successfull 😋!!')
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
+  }
 
 }
