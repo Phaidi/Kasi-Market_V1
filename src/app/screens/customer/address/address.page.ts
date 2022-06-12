@@ -35,6 +35,7 @@ export class AddressPage implements OnInit {
   async getTown() {
     if(this.adForm.town = "Pretoria central") {
       this.distance = 29.8;
+      this.adForm.dis = this.distance;
     } else if(this.adForm.town = "Pretoria north"){
       this.distance = 21.2;
     } else if(this.adForm.town = "Pretoria west"){

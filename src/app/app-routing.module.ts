@@ -78,6 +78,10 @@ const routes: Routes = [
     path: 'outlets',
     loadChildren: () => import('./screens/customer/outlets/outlets.module').then( m => m.OutletsPageModule)
   },
+  {
+    path: 'order',
+    loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
+  },
 
 
 

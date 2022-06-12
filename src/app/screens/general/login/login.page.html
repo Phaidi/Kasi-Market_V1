@@ -14,20 +14,16 @@
         <ion-icon name="mail-outline"></ion-icon>
         <ion-item>
           <ion-label position="floating">EMAIL</ion-label>
-          <ion-input type="email"
+          <ion-input
           #email="ngModel"
-            type="email" 
-            minlength="5"
-            name="email" 
-            pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}"
+            type="email"
+            name="email"
             [(ngModel)]="logForm.email"
             required>
         </ion-input>
         </ion-item>
         <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
           <div *ngIf="email.errors?.required">Email required</div>
-          <div *ngIf="email.errors?.minlength">Invalid minLength</div>
-          <div *ngIf="email.errors?.pattern">Invalid email format</div>
         </div>
       </div>
       <div class="form-input">
@@ -36,9 +32,9 @@
           <ion-label position="floating">PASSWORD</ion-label>
           <ion-input type="password"
           #password="ngModel"
-          type="password" 
+          type="password"
           minlength="5"
-          name="password" 
+          name="password"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           [(ngModel)]="logForm.password"
           required>
