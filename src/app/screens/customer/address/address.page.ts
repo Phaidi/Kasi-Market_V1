@@ -42,6 +42,7 @@ export class AddressPage implements OnInit {
     } else if(this.adForm.town = "Mabopane"){
       this.distance = 8.7;
     }
+    // hello
   }
 
 }
