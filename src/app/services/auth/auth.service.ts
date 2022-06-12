@@ -52,9 +52,9 @@ export class AuthService {
         errors = error.error;
     }
     // Return an observable with a user-facing error message.
-    // return throwError(errors);
-    console.log('service error:',error.error);
-    return throwError(() => new Error(msg));
+    return throwError(errors);
+    // console.log('service error:',error.error);
+    // return throwError(() => new Error(msg));
   }
 
   signUp(data: User1): Observable<User1>
