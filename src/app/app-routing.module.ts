@@ -74,6 +74,10 @@ const routes: Routes = [
     path: 'vttamount',
     loadChildren: () => import('./screens/vendor/vttamount/vttamount.module').then( m => m.VttamountPageModule)
   },
+  {
+    path: 'outlets',
+    loadChildren: () => import('./screens/customer/outlets/outlets.module').then( m => m.OutletsPageModule)
+  },
 
 
 

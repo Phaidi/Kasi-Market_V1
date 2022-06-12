@@ -16,16 +16,16 @@ export class WishlistPage implements OnInit {
 
   constructor(
     private wishservice: WishService,
-    private alertCtrl: AlertController, 
+    private alertCtrl: AlertController,
     private toast: LoadToastService
     ) { }
 
   ngOnInit() {
-    this.getWishes()
+    this.getWishes();
   }
 
   getWishes(){
-    this.toast.presentLoading()
+    this.toast.presentLoading();
     this.wishservice.getMyWishes().subscribe({
       next: (data: any) =>{
         console.log('Hello from details',data.wishes);
@@ -40,33 +40,33 @@ export class WishlistPage implements OnInit {
   }
 
   async moveToCart(wish: CartItem) {
-    // console.log(item)
-    const alert = await this.alertCtrl.create({
-      header: 'Remove',
-      message: 'Are you sure you want to move item to cart ?',
-      buttons: [
-        {
-          text: 'yes',
-          
-          handler: () => this.wishservice.moveToCart(wish).subscribe({
-            next: (data: any) =>{
-              console.log('Hello from delete',data)
-              this.ngOnInit();
-             
-      
-            },
-            error: err =>{
-              console.log(err)
-            }
-          }),
-        },
-        {
-          text: 'No',
-        },
-      ],
-    });
+    console.log(wish);
+    // const alert = await this.alertCtrl.create({
+    //   header: 'Remove',
+    //   message: 'Are you sure you want to move item to cart ?',
+    //   buttons: [
+    //     {
+    //       text: 'yes',
 
-    alert.present();
+    //       handler: () => this.wishservice.moveToCart(wish).subscribe({
+    //         next: (data: any) =>{
+    //           console.log('Hello from delete',data);
+    //           this.ngOnInit();
+
+
+    //         },
+    //         error: err =>{
+    //           console.log(err);
+    //         }
+    //       }),
+    //     },
+    //     {
+    //       text: 'No',
+    //     },
+    //   ],
+    // });
+
+    // alert.present();
   }
 
 
@@ -78,16 +78,16 @@ export class WishlistPage implements OnInit {
       buttons: [
         {
           text: 'yes',
-          
+
           handler: () => this.wishservice.removeItem(item.id).subscribe({
             next: (data: any) =>{
-              console.log('Hello from delete',data)
+              console.log('Hello from delete',data);
               this.ngOnInit();
-             
-      
+
+
             },
             error: err =>{
-              console.log(err)
+              console.log(err);
             }
           }),
         },
