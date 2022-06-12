@@ -24,6 +24,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.getMe()
+    this.regForm = new User1;
   }
 
   getMe(){
@@ -41,6 +42,20 @@ export class ProfilePage implements OnInit {
 
   }
 
+  changePassword(){
+
+    this.toast.presentLoading()
+    this.userService.upateAccount(this.regForm).subscribe({
+      next: (data: any) =>{
+        console.log('Hello from my details',data.me);
+        this.data = data.me;
+
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
+  }
 
 
 }

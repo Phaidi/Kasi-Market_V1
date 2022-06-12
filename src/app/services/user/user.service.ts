@@ -13,7 +13,7 @@ export class UserService {
   URL: string = `http://localhost:3000/api/v1/users`
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   public getMe(): Observable<User1> {
@@ -25,6 +25,16 @@ export class UserService {
         //  catchError(resErr => {
          
         // })
+      );
+  }
+
+  public upateAccount(body:any): Observable<User1> {
+    return this.http.patch<User1>(`${this.URL}/`,body)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+         catchError(handleError)
       );
   }
 }
