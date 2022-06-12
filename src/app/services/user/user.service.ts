@@ -37,4 +37,14 @@ export class UserService {
          catchError(handleError)
       );
   }
+
+  public requestVendorship(body:any): Observable<User1> {
+    return this.http.post<User1>(`${this.URL}/request`,body)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+         catchError(handleError)
+      );
+  }
 }

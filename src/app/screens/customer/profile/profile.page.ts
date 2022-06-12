@@ -13,6 +13,7 @@ import { LoadToastService } from 'src/app/helpers/toastHandler';
 export class ProfilePage implements OnInit {
 
   regForm: User1 = new User1;
+  upForm: User1 = new User1;
 
   selectTabs = 'profile';
   data: User1 = new User1;
@@ -57,5 +58,20 @@ export class ProfilePage implements OnInit {
     });
   }
 
+
+  requestVendorship(){
+
+
+    this.toast.presentLoading()
+    this.userService.requestVendorship(this.upForm).subscribe({
+      next: (data: any) =>{
+        
+        this.toast.logToast('Vendor request was successfull 😋!!')
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
+  }
 
 }
