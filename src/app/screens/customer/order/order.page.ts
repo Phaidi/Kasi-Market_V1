@@ -20,6 +20,7 @@ import { loadStripe } from '@stripe/stripe-js';
 export class OrderPage implements OnInit {
 
   date = new Date();
+  today = new Date();
 
   countDownDate = new Date("June 29, 2022 15:37:25").getTime();
   demo: any;
@@ -31,7 +32,8 @@ export class OrderPage implements OnInit {
     var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
     var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
     var seconds = Math.floor((distance % (1000*60)) / 1000);
-    this.demo = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    // this.demo = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    this.demo = new Date(this.today.getFullYear(),this.today.getMonth(),this.today.getDate()+12);
   });
 
   adForm: Address = new Address();
