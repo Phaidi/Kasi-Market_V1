@@ -86,7 +86,7 @@
     
    </ion-list>
 
-   <app-button routerLink="/address">
+   <app-button (click)=checkOut() routerLink="/deliveries">
     Checkout: <span><sup>R</sup>{{sum |number: '1.2'}}</span>
   </app-button>
    

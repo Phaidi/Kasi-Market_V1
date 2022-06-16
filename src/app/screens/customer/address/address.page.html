@@ -112,7 +112,7 @@
       </div>
     </div>
     <div class="action-button ion-padding">
-      <ion-button size="large" shape="round" class="login-button" routerLink="/deliveries" [disabled]="!f.valid">Save</ion-button>
+      <ion-button size="large" shape="round" class="login-button" (click)="saveAddress()" [disabled]="!f.valid">Save</ion-button>
     </div>
 
   </div>

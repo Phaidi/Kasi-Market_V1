@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 export class Address {
     street: string;
-    town: string = "Pretoria central";
+    town: string;
     province: string;
     city: string;
     zipCode: string;

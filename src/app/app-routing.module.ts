@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./screens/general/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'address',
+    path: 'address/:id',
     loadChildren: () => import('./screens/customer/address/address.module').then( m => m.AddressPageModule)
   },
   {
@@ -66,7 +66,8 @@ const routes: Routes = [
   {
     path: 'vdetail',
     loadChildren: () => import('./screens/vendor/vdetail/vdetail.module').then( m => m.VdetailPageModule)
-  },  {
+  },
+  {
     path: 'vttsold',
     loadChildren: () => import('./screens/vendor/vttsold/vttsold.module').then( m => m.VttsoldPageModule)
   },
@@ -77,10 +78,6 @@ const routes: Routes = [
   {
     path: 'outlets',
     loadChildren: () => import('./screens/customer/outlets/outlets.module').then( m => m.OutletsPageModule)
-  },
-  {
-    path: 'order',
-    loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
   },
   {
     path: 'main',
@@ -97,6 +94,10 @@ const routes: Routes = [
   {
     path: 'success',
     loadChildren: () => import('./screens/customer/success/success.module').then( m => m.SuccessPageModule)
+  },
+  {
+    path: 'order/:id',
+    loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
   },
 
 

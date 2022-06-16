@@ -21,6 +21,7 @@ export class SignupPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.regForm = new User1;
   }
 
 
@@ -35,7 +36,9 @@ signup(){
         console.log('Sign in data:',data);
         this.errors = [];
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], {
+          queryParams: { message: 'You have registered successfully' }
+        });
 
       },
       error: err => {
