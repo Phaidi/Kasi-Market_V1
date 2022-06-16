@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
@@ -21,6 +21,8 @@ export class CartPage implements OnInit {
   // totalAmount$: Observable<number>;
   myCart: any[]
   sum: any = 0;
+  public s =10;
+
 
   // foods: any[] = [];
   // codeItems: any;
@@ -34,6 +36,7 @@ export class CartPage implements OnInit {
     private cartService: CartService,
     private alertCtrl: AlertController, 
     private loadCrt: LoadingController,
+    public nav: NavController,
     private toast: LoadToastService) {
     // this.tempF = this.foods;
     // this.getCart();
@@ -43,6 +46,10 @@ export class CartPage implements OnInit {
     // this.cartItems$ = this.cartService.getCart()
     this.getCart();
     // this.totalAmount$ = this.cartService.getTotalAmount();
+  }
+
+  checkOut(){
+
   }
 
   getCart(){

@@ -206,6 +206,11 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <div *ngIf="errors.length > 0" class="alert alert-danger">
+        <p *ngFor="let error of errors">
+          {{error}}
+        </p>
+      </div>
       <br><br><br>
       <ion-button [disabled]="!f.valid" (click)="changePassword()" size="large" expand="full" fill="outline" shape="round">
         UPDATE PROFILE

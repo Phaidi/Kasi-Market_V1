@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { LoadToastService } from 'src/app/helpers/toastHandler';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User1 } from '../../../models/user1';
 
@@ -18,6 +19,7 @@ export class LoginPage implements OnInit {
   constructor(private authService: AuthService,
               private router: Router,
               private route: ActivatedRoute,
+              private toast: LoadToastService,
               public loadingController: LoadingController,
               private loadCrt: LoadingController) { }
 
@@ -56,6 +58,8 @@ export class LoginPage implements OnInit {
   checkMessage() {
     this.route.queryParams.subscribe(params => {
       params['message'] ? this.message = params['message'] : null;
+
+      this.toast.logToast(this.message)
 
       setTimeout(() => {
         this.router.navigate([], {

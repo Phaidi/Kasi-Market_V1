@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeliveriesPage implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit() {
