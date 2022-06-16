@@ -14,12 +14,12 @@ export class ProfilePage implements OnInit {
 
   regForm: User1 = new User1;
 
-  selectTabs = 'profile';
+  selectTabs = 'orders';
   data: User1 = new User1;
 
 
   constructor(private userService: UserService,
-    private alertCtrl: AlertController, 
+    private alertCtrl: AlertController,
     private toast: LoadToastService) { }
 
   ngOnInit() {
