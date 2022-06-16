@@ -82,6 +82,22 @@ const routes: Routes = [
     path: 'order',
     loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
   },
+  {
+    path: 'main',
+    loadChildren: () => import('./screens/admin/main/main.module').then( m => m.MainPageModule)
+  },
+  {
+    path: 'advendor',
+    loadChildren: () => import('./screens/admin/advendor/advendor.module').then( m => m.AdvendorPageModule)
+  },
+  {
+    path: 'adcustomer',
+    loadChildren: () => import('./screens/admin/adcustomer/adcustomer.module').then( m => m.AdcustomerPageModule)
+  },
+  {
+    path: 'success',
+    loadChildren: () => import('./screens/customer/success/success.module').then( m => m.SuccessPageModule)
+  },
 
 
 
