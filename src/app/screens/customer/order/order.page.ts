@@ -1,3 +1,6 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadToastService } from 'src/app/helpers/toastHandler';
@@ -14,15 +17,15 @@ import { loadStripe } from '@stripe/stripe-js';
 })
 export class OrderPage implements OnInit {
 
-  adForm: Address = new Address;
+  adForm: Address = new Address();
 
   date = new Date();
-  orders = []
-  myCart: any
-  errors = []
+  orders = [];
+  myCart: any;
+  errors = [];
   sum: any = 0;
-  orderNum: any
-  address: any
+  orderNum: any;
+  address: any;
   len: any = 0;
   id: any;
   constructor(
@@ -31,7 +34,7 @@ export class OrderPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private payService: PayService,
-    private toast: LoadToastService) { 
+    private toast: LoadToastService) {
       this.id = +this.activatedRoute.snapshot.paramMap.get('id');
      }
 
@@ -39,31 +42,31 @@ export class OrderPage implements OnInit {
 
     this.getCart();
     this.orderNum =  Date.now().toString().substr(-4) + (Math.floor(Math.random() * (500 - 100) + 100));
-    console.log(this.orderNum, this.address)
-   
+    console.log(this.orderNum, this.address);
+
 
   }
 
   getCart(){
     this.cartService.getCart().subscribe({
       next: (data: any) => {
-        this.toast.presentLoading()
+        this.toast.presentLoading();
 
 
-        
+
         data.carts.forEach(a => this.sum += a.item.price * a.quantity);
         if(this.id == 1){
           this.sum += 0;
 
-        } 
+        }
         else{
           this.getAddress();
           this.sum += 65;
-        } 
-        console.log('Im in cart data :',data.carts.length)
+        }
+        console.log('Im in cart data :',data.carts.length);
         // this.errors = [];
-        
-      
+
+
 
         this.len = data.carts.length;
 
@@ -71,7 +74,7 @@ export class OrderPage implements OnInit {
       error: err => {
         // this.errors[0] = err.message;
       }
-    })
+    });
   }
 
 
@@ -81,33 +84,33 @@ export class OrderPage implements OnInit {
         this.address = data;
 
 
-        console.log('Im in Address data :', this.address,data)
+        console.log('Im in Address data :', this.address,data);
         // this.errors = []
 
       },
       error: err => {
         // this.errors[0] = err.message;
       }
-    })
+    });
   }
 
 
   async checkOut(){
 
-    let  data = {
+    const  data = {
       amount: this.sum,
       orderNum: this.orderNum,
       deliveryType: this.id
-    }
+    };
     await this.payService.checkOut(data).subscribe({
      next: async (data: any) => {
-       this.errors = []
+       this.errors = [];
       //  console.log(data.session.url)
       const stripe = await loadStripe(`pk_test_51L9xZ0AJ7djmLPomIaBL4GY1UZlQYluus6uo31LE0mCYdkrBtdD9GYXZ1HUURnBaPvIuFrCHkzu8NIR4FAL5z3dy00CsMYLhh9`);
-     
-      
+
+
       await stripe.redirectToCheckout({
-          sessionId: data['session'].id
+          sessionId: data.session.id
 
         });
 
@@ -115,7 +118,7 @@ export class OrderPage implements OnInit {
      error: err => {
        // this.errors[0] = err.message;
      }
-   })
+   });
  }
 
 
