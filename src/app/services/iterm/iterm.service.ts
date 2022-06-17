@@ -53,6 +53,15 @@ export class ItermService {
         }), catchError(this.handleError));
   }
 
+
+  public getMyItems(): Observable<Food[]> {
+    return this.http.get<Food[]>(`${this.URL}/myOrders`)
+      .pipe(
+        map(data => {
+          return data;
+        }), catchError(this.handleError));
+  }
+
   public createOrder(id, formBody): Observable<Food> {
     return this.http.post<Food>(`${this.URL}/${id}`, formBody)
       .pipe(

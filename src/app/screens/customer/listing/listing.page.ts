@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoadToastService } from 'src/app/helpers/toastHandler';
 import { Category } from 'src/app/models/category.model';
 import { Food } from 'src/app/models/food.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
 
 @Component({
@@ -21,13 +22,14 @@ export class ListingPage implements OnInit {
   constructor(
     private itermService: ItermService,
     private router: Router,
-    private toast: LoadToastService) {
+    private toast: LoadToastService,
+    private authService: AuthService) {
 
   }
 
   ngOnInit() {
 
-    this.getAllItems()
+    this.getAllItems();
   }
 
   search(data){
@@ -46,7 +48,7 @@ export class ListingPage implements OnInit {
 
     this.itermService.getAllItems().subscribe({
       next: (data: any) => {
-        this.toast.presentLoading()
+        this.toast.presentLoading();
         console.log('Sign in data:',data.items);
         this.foods= data.items;
         this.tempF = this.foods;
@@ -73,6 +75,10 @@ export class ListingPage implements OnInit {
         para2: 'adipiscing elit.'
       };
     }, 5000);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

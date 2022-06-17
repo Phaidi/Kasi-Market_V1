@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { User1 } from '../../../models/user1';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { LoadToastService } from 'src/app/helpers/toastHandler';
+import { OrdersService } from 'src/app/services/orders/orders.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,17 +16,23 @@ export class ProfilePage implements OnInit {
   regForm: User1 = new User1;
   upForm: User1 = new User1;
   errors = [];
+  sum = 0
+  items: any
 
-  selectTabs = 'profile';
+  selectTabs = 'orders';
   data: User1 = new User1;
+  orders: any;
 
 
-  constructor(private userService: UserService,
-    private alertCtrl: AlertController, 
+  constructor(
+    private userService: UserService,
+    private orderService: OrdersService,
+    private alertCtrl: AlertController,
     private toast: LoadToastService) { }
 
   ngOnInit() {
     this.getMe()
+    this.getOrders()
     this.regForm = new User1;
   }
 
@@ -42,6 +49,57 @@ export class ProfilePage implements OnInit {
       }
     });
 
+  }
+
+  userDate(date){
+    return date.substr(0,10)
+  }
+  deliveryDate(date){
+    let d = new Date(date.substr(0,10));
+    d.setDate(d.getDate() + 7);
+    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
+  }
+  getSatus(date){
+
+    // date = new Date(date.substr(0,10));
+    let d = new Date(date.substr(0,10));
+    d.setDate(d.getDate() + 7);
+   
+    return  d.toDateString() >= Date() ? "On the way": "Delivered"
+
+  }
+
+  getOrders(){
+    this.toast.presentLoading()
+    this.orderService.getOrders().subscribe({
+      next: (data: any) =>{
+        console.log('Hello Orders',data.orders);
+        console.log('Hello Items',data.items);
+        
+
+ 
+        this.items = data.items;
+        this.orders = data.orders;
+
+      },
+      error: err =>{
+        console.log(err);
+      }
+    });
+
+  }
+
+  getSum(orderNum){
+    let sum =0;
+    this.items.forEach(a => {
+      if(orderNum ==a.orderNum) {
+        sum += a.item.price * a.quantity;
+        // console.log('Hello Sum',a.orderNum);
+      }
+      
+    });
+    return sum
+  
   }
 
   changePassword(){

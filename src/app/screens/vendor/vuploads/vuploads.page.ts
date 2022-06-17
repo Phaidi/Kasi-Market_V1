@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Upload } from 'src/app/models/upload';
+import { Food } from 'src/app/models/food.model';
 
 @Component({
   selector: 'app-vuploads',
@@ -8,7 +8,7 @@ import { Upload } from 'src/app/models/upload';
 })
 export class VuploadsPage implements OnInit {
 
-  upForm: Upload = new Upload();
+  upForm: Food;
 
   constructor() { }
 
