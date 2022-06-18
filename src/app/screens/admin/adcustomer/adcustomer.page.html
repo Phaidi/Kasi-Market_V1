@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Customer</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -20,45 +20,16 @@
   <ion-list>
     <ion-list-header> Customer list </ion-list-header>
 
-    <ion-item>
+    <ion-item *ngFor="let user of users">
       <ion-label>
-        <h2>Finn</h2>
-        <h3>Finn@mail.com</h3>
+        <h2>{{user.name}}</h2>
+        <h3>{{user.email}}</h3>
       </ion-label>
       <ion-buttons slot="end">
-        <ion-icon name="trash-outline"></ion-icon>
+        <ion-icon (click)="deleteUserAcc(user.id)" name="trash-outline"></ion-icon>
       </ion-buttons>
     </ion-item>
 
-    <ion-item>
-      <ion-label>
-        <h2>Han</h2>
-        <h3>Han@mail.com</h3>
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-buttons>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>
-        <h2>Rey</h2>
-        <h3>Rey@mail.com</h3>
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-buttons>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>
-        <h2>Luke</h2>
-        <h3>luke@mail.com</h3>
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-buttons>
-    </ion-item>
   </ion-list>
 </div>
 

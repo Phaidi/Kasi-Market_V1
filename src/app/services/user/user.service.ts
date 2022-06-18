@@ -22,11 +22,72 @@ export class UserService {
         map(data => {
           return data;
         }),
-        //  catchError(resErr => {
-         
-        // })
+        catchError(handleError)
       );
   }
+
+  public getVendorRequests(): Observable<User1> {
+    return this.http.get<User1>(`${this.URL}/vendors`)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(handleError)
+      );
+  }
+
+  public getAllUsers(): Observable<User1> {
+    return this.http.get<User1>(`${this.URL}/users`)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(handleError)
+      );
+  }
+
+  public getAllVenmdors(): Observable<User1> {
+    return this.http.get<User1>(`${this.URL}/getAllvendors`)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(handleError)
+      );
+  }
+
+
+  public acceptVendorShip(id: any): Observable<User1> {
+    return this.http.patch<User1>(`${this.URL}/acceptVendor/${id}`,{})
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(handleError)
+      );
+  }
+  
+  public deleteUserAcc(id: any): Observable<User1> {
+    return this.http.delete<User1>(`${this.URL}/deleteUser/${id}`)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(handleError)
+      );
+  }
+
+  public deleteVendorAcc(id: any): Observable<User1> {
+    return this.http.delete<User1>(`${this.URL}/deleteVendor/${id}`)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(handleError)
+      );
+  }
+  
+  
 
   public upateAccount(body:any): Observable<User1> {
     return this.http.patch<User1>(`${this.URL}/`,body)
