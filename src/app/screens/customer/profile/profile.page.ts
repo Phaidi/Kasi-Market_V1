@@ -14,6 +14,7 @@ export class ProfilePage implements OnInit {
 
   regForm: User1 = new User1;
   upForm: User1 = new User1;
+  errors = [];
 
   selectTabs = 'profile';
   data: User1 = new User1;
@@ -53,7 +54,8 @@ export class ProfilePage implements OnInit {
 
       },
       error: err =>{
-        console.log(err);
+        // console.log(err);
+        this.errors[0] = err.message;
       }
     });
   }

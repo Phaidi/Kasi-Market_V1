@@ -206,6 +206,11 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <div *ngIf="errors.length > 0" class="alert alert-danger">
+        <p *ngFor="let error of errors">
+          {{error}}
+        </p>
+      </div>
       <br><br><br>
       <ion-button [disabled]="!f.valid" (click)="changePassword()" size="large" expand="full" fill="outline" shape="round">
         UPDATE PROFILE
@@ -263,7 +268,7 @@
                 match="checkP()"
                 name="password"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                [(ngModel)]="regForm.password"
+                [(ngModel)]="upForm.password"
                 required>
               </ion-input>
               </ion-item>
@@ -294,7 +299,7 @@
                 minlength="5"
                 name="conPassword"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                [(ngModel)]="regForm.conPassword"
+                [(ngModel)]="upForm.conPassword"
                 required>
                 </ion-input>
               </ion-item>

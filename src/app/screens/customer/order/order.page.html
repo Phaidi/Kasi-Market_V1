@@ -11,39 +11,37 @@
   <ion-card>
     <ion-item>
       <ion-icon name="information-circle"></ion-icon>
-      <ion-button fill="outline" color="dark">#OrderNumber/name</ion-button>
+      <ion-button fill="outline" color="dark"># {{orderNum}}</ion-button>
     </ion-item>
 
     <ion-card-header>
       <ion-card-subtitle>Estimated Delivery/Collection date: {{date | date:'mediumDate'}}</ion-card-subtitle>
       <ion-card-title>Order details</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      Item: <span><sup>R</sup>{{2500 |number: '1.2'}}</span>
-    </ion-card-content>
+ 
     <ion-card-header>
-      <ion-card-subtitle>Order Summery</ion-card-subtitle>
+      <ion-card-subtitle>Order Summary</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      3 Items: <span><sup>R</sup>{{2500 |number: '1.2'}}</span><br>
+      {{len}} Items <br>
       Delivery: <span><sup>R</sup>{{0 |number: '1.2'}}</span><br>
-      Total: <span><sup>R</sup>{{5200 |number: '1.2'}}</span>
+      Total: <span><sup>R</sup>{{ sum |number: '1.2'}}</span>
     </ion-card-content>
-    <ion-card-header>
+    <!-- <ion-card-header>
       <ion-card-subtitle>Address</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      Soshanguve-K<br>
-      Soshanguve<br>
+      <br>
+      {{address.town}}<br>
       0152
-    </ion-card-content>
+    </ion-card-content> -->
 
   </ion-card>
 
   <ion-row>
     <ion-col>
           <ion-row class="ion-justify-content-center">
-            <ion-button routerLink="/payments" shape="round">Proceed to pay</ion-button>
+            <ion-button (click)="checkOut()" shape="round">Proceed to pay</ion-button>
           </ion-row>
     </ion-col>
   </ion-row>

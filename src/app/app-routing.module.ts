@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./screens/general/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'address',
+    path: 'address/:id',
     loadChildren: () => import('./screens/customer/address/address.module').then( m => m.AddressPageModule)
   },
   {
@@ -66,7 +66,8 @@ const routes: Routes = [
   {
     path: 'vdetail',
     loadChildren: () => import('./screens/vendor/vdetail/vdetail.module').then( m => m.VdetailPageModule)
-  },  {
+  },
+  {
     path: 'vttsold',
     loadChildren: () => import('./screens/vendor/vttsold/vttsold.module').then( m => m.VttsoldPageModule)
   },
@@ -79,7 +80,7 @@ const routes: Routes = [
     loadChildren: () => import('./screens/customer/outlets/outlets.module').then( m => m.OutletsPageModule)
   },
   {
-    path: 'order',
+    path: 'order/:id',
     loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
   },
 
