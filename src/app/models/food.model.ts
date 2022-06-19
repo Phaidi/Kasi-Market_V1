@@ -1,7 +1,7 @@
-export interface Food {
-    id: number;
-    title: string;
-    price: number;
-    image?: string;
-    description?: string;
+export class Food {
+    id: number | undefined;
+    title: string | undefined;
+    price: number | undefined;
+    image?: string | undefined; 
+    description?: string | undefined;
 }

@@ -1,0 +1,26 @@
+ion-content {
+  --background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1) ),
+  url("../../../../assets/6.jpg") no-repeat center center / cover;
+}
+
+h3 {
+  padding: 10px;
+}
+
+.action-button {
+  text-align: center;
+  .login-button {
+      --background: #f9b801;
+      width: 100%;
+      font-weight: bold;
+  }
+  ion-title{
+      margin-top: 15px;
+      font-size: 2rem;
+      color: #7b7b7b;
+  }
+}
+
+ion-card {
+  margin-top: 50px;
+}
