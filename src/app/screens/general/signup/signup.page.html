@@ -12,13 +12,13 @@
           <ion-label position="floating">NAME</ion-label>
           <ion-input type="text"
           #name="ngModel"
-            type="text" 
+            type="text"
             minlength="5"
-            name="name" 
+            name="name"
             [(ngModel)]="regForm.name"
             required>
           </ion-input>
-        </ion-item> 
+        </ion-item>
         <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
           <div *ngIf="name.errors?.required">Name required</div>
           <div *ngIf="name.errors?.minlength">Invalid minLength</div>
@@ -30,9 +30,9 @@
           <ion-label position="floating">SURNAME</ion-label>
           <ion-input type="text"
           #surname="ngModel"
-            type="text" 
+            type="text"
             minlength="5"
-            name="surname" 
+            name="surname"
             [(ngModel)]="regForm.surname"
             required>
           </ion-input>
@@ -48,10 +48,10 @@
           <ion-label position="floating">EMAIL</ion-label>
           <ion-input type="email"
           #email="ngModel"
-            type="email" 
+            type="email"
             minlength="5"
-            name="email" 
-            pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}"
+            name="email"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
             [(ngModel)]="regForm.email"
             required>
           </ion-input>
@@ -68,10 +68,10 @@
           <ion-label position="floating">PASSWORD</ion-label>
           <ion-input type="password"
           #password="ngModel"
-          type="password" 
+          type="password"
           minlength="5"
           match="checkP()"
-          name="password" 
+          name="password"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           [(ngModel)]="regForm.password"
           required>
@@ -95,9 +95,9 @@
           <ion-label position="floating">CONFIRM PASSWORD</ion-label>
           <ion-input type="password"
           #conPassword="ngModel"
-          type="password" 
+          type="password"
           minlength="5"
-          name="conPassword" 
+          name="conPassword"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           [(ngModel)]="regForm.conPassword"
           required>

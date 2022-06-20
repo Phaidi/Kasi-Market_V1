@@ -80,6 +80,10 @@ const routes: Routes = [
     loadChildren: () => import('./screens/customer/outlets/outlets.module').then( m => m.OutletsPageModule)
   },
   {
+    path: 'order/:id',
+    loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
+  },
+  {
     path: 'main',
     loadChildren: () => import('./screens/admin/main/main.module').then( m => m.MainPageModule)
   },
@@ -94,11 +98,12 @@ const routes: Routes = [
   {
     path: 'success',
     loadChildren: () => import('./screens/customer/success/success.module').then( m => m.SuccessPageModule)
+  },  {
+    path: 'o-preview',
+    loadChildren: () => import('./screens/customer/o-preview/o-preview.module').then( m => m.OPreviewPageModule)
   },
-  {
-    path: 'order/:id',
-    loadChildren: () => import('./screens/customer/order/order.module').then( m => m.OrderPageModule)
-  },
+
+
 
 
 

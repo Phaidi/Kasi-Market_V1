@@ -8,6 +8,9 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 
+import { File } from '@ionic-native/file/ngx/index';
+import { FileOpener } from '@ionic-native/file-opener/ngx/index';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { ProfilePage } from './profile.page';
     IonicModule,
     ProfilePageRoutingModule
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage],
+  providers: [File, FileOpener]
 })
 export class ProfilePageModule {}

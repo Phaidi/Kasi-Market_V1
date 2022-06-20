@@ -53,6 +53,31 @@ export class ItermService {
         }), catchError(this.handleError));
   }
 
+  
+  public listItems(): Observable<any> {
+    return this.http.get<any>(`${this.URL}/myItems`)
+      .pipe(
+        map(data => {
+          return data;
+        }), catchError(this.handleError));
+  }
+  public getMyItems(): Observable<Food[]> {
+    return this.http.get<Food[]>(`${this.URL}/myOrders`)
+      .pipe(
+        map(data => {
+          return data;
+        }), catchError(this.handleError));
+  }
+
+  public createItem(formBody): Observable<Food> {
+    return this.http.post<Food>(`${this.URL}/`, formBody)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError(this.handleError));
+  }
+
   public createOrder(id, formBody): Observable<Food> {
     return this.http.post<Food>(`${this.URL}/${id}`, formBody)
       .pipe(
@@ -77,6 +102,15 @@ export class ItermService {
 
   public updateOrder(id): Observable<Food> { // cart ID is being sent
     return;
+  }
+
+  
+  public deleteItem(id): Observable<any> { // cart ID is being sent
+    return this.http.delete<any>(`${this.URL}/${id}`)
+      .pipe(
+        map(data => {
+          return data;
+        }), catchError(this.handleError));
   }
 
   public deleteOrder(id): Observable<Food> { // cart ID is being sent

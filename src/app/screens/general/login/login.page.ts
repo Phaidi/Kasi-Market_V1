@@ -43,7 +43,10 @@ export class LoginPage implements OnInit {
           this.router.navigate(['/home/listing']);
         } if(userType == 'vendor'){
           this.router.navigate(['/vdash/vlist']);
+        }  if(userType == 'admin'){
+          this.router.navigate(['/main/advendor']);
         }
+
 
       },
       error: err => {

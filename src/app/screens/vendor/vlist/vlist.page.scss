@@ -1,150 +1,82 @@
-// ion-content {
-//     --padding-start: 2rem;
-//     --padding-end: 2rem;
+ion-content {
+    --padding-start: 2rem;
+    --padding-end: 2rem;
 
-//     .header {
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-//         margin-bottom: 1rem;
-//         margin-top: 3rem;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
 
-//         h1 {
-//             font-size: 3rem;
-//             font-weight: 600;
-//             color: #515151;
-//             margin: 0;
-//         }
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #515151;
+            margin: 0;
+        }
 
-//         .avatar {
-//             width: 35px;
-//             height: 35px;
-//             background-color: #6b45bc;
-//             border-radius: 50%;
-//             display: flex;
-//             align-items: flex-end;
-//             justify-content: center;
-//             overflow: hidden;
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background-color: #6b45bc;
+            border-radius: 50%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
 
-//             ion-img {
-//                 width: 90%;
-//                 height: 90%;
-//             }
-//         }
-//     }
+            ion-img {
+                width: 90%;
+                height: 90%;
+            }
+        }
+    }
 
-//     input {
-//         --box-shadow: none;
-//         --background: #f3f3f3;
-//         --border-radius: 1.2rem;
-//         --placeholder-font-weight: 600;
-//         --placeholder-opacity: 0.2;
+    input {
+        --box-shadow: none;
+        --background: #f3f3f3;
+        --border-radius: 1.2rem;
+        --placeholder-font-weight: 600;
+        --placeholder-opacity: 0.2;
 
-//         // padding: 0;
-//         margin-top: 20px;
-//         margin-bottom: 2rem;
+        // padding: 0;
+        margin-top: 20px;
+        margin-bottom: 2rem;
 
-//         padding: 10px;
-//         font-size: 17px;
-//         border: 1px solid grey;
-//         width: 80%;
-//         background: #f1f1f1;
-//     }
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        width: 80%;
+        background: #f1f1f1;
+    }
 
-//     .categories {
-//         display: grid;
-//         grid-template-columns: repeat(4, 1fr);
-//         grid-gap: 1rem;
-//     }
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1rem;
+    }
 
-//     .list-header {
-//         font-weight: 700;
-//         color: #515151;
-//         font-size: 1.8rem;
-//         margin-bottom: 1.6rem;
-//         margin-top: 0.5rem;
-//     }
+    .list-header {
+        font-weight: 700;
+        color: #515151;
+        font-size: 1.8rem;
+        margin-bottom: 1.6rem;
+        margin-top: 0.5rem;
+    }
 
-//     .food-list {
-//         display: grid;
-//         grid-template-columns: 1fr 1fr;
-//         grid-gap: 1fr;
-//     }
-// }
+    .food-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1fr;
+    }
+}
 
 
 
-// // styles for card
+// styles for card
 
-// .card {
-//     width: 100%;
-//     padding: 1.6rem 2rem;
-//     background: #f3f3f3;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     position: relative;
-//     border-radius: 2.5rem;
-//     margin-bottom: 1.5rem;
-
-//     .card-content {
-//         text-align: center;
-
-//         .title {
-//             font-weight: 700;
-//             font-size: 1.1rem;
-//             margin-bottom: 0.2rem;
-//             margin-bottom: 0.2rem;color: #1d1d1d;
-//         }
-
-//         .subtitle {
-//             font-size: 1.3rem;
-//             font-weight: 700;
-//             color: #ffb800;
-//             margin-top: 0;
-
-//             sup {
-//                 font-size: 1rem;
-//                 margin-right: 2px;
-//             }
-//         }
-
-//         ion-buttons {
-//             position: absolute;
-//             bottom: -1rem;
-//             left: 50%;
-//             transform: translateX(-50%);
-
-//             ion-button {
-//                 --background: #6b45bc;
-//                 font-weight: 700;
-//                 color: #fff;
-//                 width: 40px;
-//                 height: 40px;
-
-//                 --padding-start: 0;
-//                 --padding-end: 0;
-//                 --padding-top: 0;
-//                 --padding-bottom: 0;
-//             }
-//         }
-//     }
-// }
-
-.food-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1fr;
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 600;
-    color: #515151;
-    margin: 0;
-    padding: 20px;
-  }
-
-  .card {
+.card {
     width: 100%;
     padding: 1.6rem 2rem;
     background: #f3f3f3;
@@ -156,93 +88,45 @@
     margin-bottom: 1.5rem;
 
     .card-content {
-      text-align: center;
+        text-align: center;
 
-      .title {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 0.2rem;
-        margin-bottom: 0.2rem;
-        color: #1d1d1d;
-      }
-
-      .subtitle {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: #ffb800;
-        margin-top: 0;
-
-        sup {
-          font-size: 1rem;
-          margin-right: 2px;
+        .title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            margin-bottom: 0.2rem;color: #1d1d1d;
         }
-      }
 
-      ion-buttons {
-        position: absolute;
-        bottom: -1rem;
-        left: 50%;
-        transform: translateX(-50%);
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffb800;
+            margin-top: 0;
 
-        ion-button {
-          --background: #6b45bc;
-          font-weight: 700;
-          color: #fff;
-          width: 40px;
-          height: 40px;
-
-          --padding-start: 0;
-          --padding-end: 0;
-          --padding-top: 0;
-          --padding-bottom: 0;
+            sup {
+                font-size: 1rem;
+                margin-right: 2px;
+            }
         }
-      }
+
+        ion-buttons {
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+
+            ion-button {
+                --background: #6b45bc;
+                font-weight: 700;
+                color: #fff;
+                width: 40px;
+                height: 40px;
+
+                --padding-start: 0;
+                --padding-end: 0;
+                --padding-top: 0;
+                --padding-bottom: 0;
+            }
+        }
     }
-
-    .avatar {
-      width: 35px;
-      height: 35px;
-      background-color: #6b45bc;
-      border-radius: 50%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: hidden;
-
-      ion-img {
-        width: 90%;
-        height: 90%;
-      }
-    }
-  }
-
 }
-
-ion-title{
-  margin-top: 15px;
-  font-size: 2rem;
-  color: #7b7b7b;
-}
-
-input {
-  --box-shadow: none;
-      --background: #f3f3f3;
-      --border-radius: 1.2rem;
-      --placeholder-font-weight: 600;
-      --placeholder-opacity: 0.2;
-  
-      // padding: 0;
-      margin-top: 20px;
-      margin-bottom: 2rem;
-
-      padding: 10px;
-      font-size: 17px;
-      border: 1px solid grey;
-      width: 80%;
-      background: #f1f1f1;
-}
-
-.input {
-  padding: 20px;
-}
-

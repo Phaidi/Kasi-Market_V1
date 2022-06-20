@@ -21,6 +21,14 @@
     </div>
   </div>
 </ion-content> -->
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Vendor List</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="icon"name="log-out-outline" style="zoom:2.0"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
@@ -31,79 +39,46 @@
       class="searchbar-search-icon"
       placeholder="search"
       name="searchQ"/>
-
       <h1 class="list-header">Your Item list</h1>
   </div>
-  
 
-  <div class="food-list">
-    <div class="card">
-      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
+
+  <div *ngFor="let item of items">
+    <!--<div>
+      <ion-img src="{{item.image}}"></ion-img>
 
       <div class="card-content">
-        <h3 class="title">TITTLE!!!</h3>
-        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
+        <h3 class="title">{{item.title}}</h3>
+        <h2 class="subtitle"><sup>R</sup>{{item.price|number:'1.2'}}</h2>
 
         <ion-buttons>
           <ion-button routerLink="/vdetail">
             <ion-icon slot="icon-only" name="create-outline"></ion-icon>
           </ion-button>
-          <ion-button>
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          <ion-button (click)="deleteItem(item.id)">
+            <ion-icon  slot="icon-only" name="trash-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>
-    </div>
+    </div>-->
+
     <div class="card">
-      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
+      <ion-img (click)="navigate(item.id)" [src]="item.image"></ion-img>
 
       <div class="card-content">
-        <h3 class="title">TITTLE!!!</h3>
-        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
+        <h3 class="title">{{item.title}}</h3>
+        <h2 class="subtitle"><sup>R</sup>{{item.price|number:'1.2'}}</h2>
 
         <ion-buttons>
           <ion-button routerLink="/vdetail">
             <ion-icon slot="icon-only" name="create-outline"></ion-icon>
           </ion-button>
-          <ion-button>
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          <ion-button (click)="deleteItem(item.id)">
+            <ion-icon  slot="icon-only" name="trash-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>
     </div>
-    <div class="card">
-      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
 
-      <div class="card-content">
-        <h3 class="title">TITTLE!!!</h3>
-        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
-
-        <ion-buttons>
-          <ion-button routerLink="/vdetail">
-            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-          </ion-button>
-          <ion-button>
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </div>
-    </div>
-    <div class="card">
-      <ion-img src="../../../../assets/images/i4.jpg"></ion-img>
-
-      <div class="card-content">
-        <h3 class="title">TITTLE!!!</h3>
-        <h2 class="subtitle"><sup>R</sup>{{200|number:'1.2'}}</h2>
-
-        <ion-buttons>
-          <ion-button routerLink="/vdetail">
-            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-          </ion-button>
-          <ion-button>
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </div>
-    </div>
   </div>
 </ion-content>

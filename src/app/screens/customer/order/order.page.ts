@@ -1,15 +1,13 @@
 /* eslint-disable eqeqeq */
-/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable no-var */
-/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadToastService } from 'src/app/helpers/toastHandler';
 import { Address } from 'src/app/models/address';
 import { AddressService } from 'src/app/services/address/address.service';
 import { CartService } from 'src/app/services/cart/cart.service';
-import { PayService } from 'src/app/services/pay/pay.service';;
+import { PayService } from 'src/app/services/pay/pay.service';
 import { loadStripe } from '@stripe/stripe-js';
 
 @Component({
@@ -19,24 +17,9 @@ import { loadStripe } from '@stripe/stripe-js';
 })
 export class OrderPage implements OnInit {
 
-  date = new Date();
-  today = new Date();
-
-  countDownDate = new Date("June 29, 2022 15:37:25").getTime();
-  demo: any;
-
-  x = setInterval(() => {
-    var now = new Date().getTime();
-    var distance = this.countDownDate - now;
-    var days = Math.floor(distance /(1000*60*60*24));
-    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    var seconds = Math.floor((distance % (1000*60)) / 1000);
-    // this.demo = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    this.demo = new Date(this.today.getFullYear(),this.today.getMonth(),this.today.getDate()+12);
-  });
-
   adForm: Address = new Address();
+
+  date = new Date();
   orders = [];
   myCart: any;
   errors = [];

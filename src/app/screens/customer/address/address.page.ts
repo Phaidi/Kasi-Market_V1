@@ -61,16 +61,18 @@ export class AddressPage implements OnInit {
   }
 
   async getTown() {
-    if(this.adForm.town = "Pretoria central") {
-      this.distance = 29.8;
-      this.adForm.dis = this.distance;
-    } else if(this.adForm.town = "Pretoria north"){
-      this.distance = 21.2;
-    } else if(this.adForm.town = "Pretoria west"){
-      this.distance = 29.8;
-    } else if(this.adForm.town = "Mabopane"){
-      this.distance = 8.7;
-    }
+    this.adForm.town = "";
+    this.distance = 0;
+    // if(this.adForm.town = "Pretosria central") {
+    //   this.distance = 29.8;
+    //   this.adForm.dis = this.distance;
+    // } else if(this.adForm.town = "Pretoria north"){
+    //   this.distance = 21.2;
+    // } else if(this.adForm.town = "Pretoria west"){
+    //   this.distance = 29.8;
+    // } else if(this.adForm.town = "Mabopane"){
+    //   this.distance = 8.7;
+    // }
     // hello
   }
 

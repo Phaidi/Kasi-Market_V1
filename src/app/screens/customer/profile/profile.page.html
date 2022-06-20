@@ -108,10 +108,6 @@
       <ion-label color="light">Orders</ion-label>
       <ion-icon color="light" name="document-text"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="deliveries">
-      <ion-label color="light">Deliveries</ion-label>
-      <ion-icon color="light" name="airplane"></ion-icon>
-    </ion-segment-button>
     <ion-segment-button value="supplier">
       <ion-label color="light">Supplier</ion-label>
       <ion-icon color="light" name="terminal-outline"></ion-icon>
@@ -220,32 +216,22 @@
 
   <div *ngIf="selectTabs === 'orders'">
     <h3>Your Orders</h3>
-    <ion-card>
+    <ion-card *ngFor="let order of orders">
       <ion-item>
-        <h1>< Order Name ></h1>
+        <h1  routerLink="/o-preview"> #{{order.orderNum}} </h1>
       </ion-item>
 
       <ion-card-content>
-        <p>< Order Date ></p>
-        <p>< Order Amount ></p>
+        <p>Order Date:  {{userDate(order.createdAt)}} </p>
+        <p>Status: {{getSatus(order.createdAt)}}</p>
+        <p>Delivery Date: {{deliveryDate(order.createdAt)}}</p>
+        <p>Amount: R {{getSum(order.orderNum)}} </p>
       </ion-card-content>
+      &nbsp;&nbsp;&nbsp;<ion-button size="small">Small</ion-button>
     </ion-card>
   </div>
 
-  <div *ngIf="selectTabs === 'deliveries'">
-    <h3>Your Deliveries</h3>
-    <ion-card>
-      <ion-item>
-        <h1>< Order Name ></h1>
-      </ion-item>
 
-      <ion-card-content>
-        <p>< Order Date ></p>
-        <p>< Order Amount ></p>
-        <p>< Delivery Date ></p>
-      </ion-card-content>
-    </ion-card>
-  </div>
 
   <div *ngIf="selectTabs === 'supplier'">
     <div>
