@@ -73,19 +73,10 @@ export class AdcustomerPage implements OnInit {
 
   }
   
-  signup(){
-
-    this.authService.signUp(this.regForm).subscribe({
-      next: data => {
-        console.log('Sign in data:',data);
-        this.errors = [];
-          queryParams: { message: 'You have registered successfully' }
-
-      },
-      error: err => {
-        this.errors[0] = err.message;
-      }
-    });
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home/listing']);
+    console.log("You out!!")
   }
 
 }

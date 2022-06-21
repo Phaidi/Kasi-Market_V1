@@ -111,22 +111,28 @@ export class AdvendorPage implements OnInit {
 
   }
 
-  signup(){
+  // signup(){
 
-    this.authService.signUp(this.regForm).subscribe({
-      next: data => {
-        console.log('Sign in data:',data);
-        this.errors = [];
+  //   this.authService.signUp(this.regForm).subscribe({
+  //     next: data => {
+  //       console.log('Sign in data:',data);
+  //       this.errors = [];
 
-          this.router.navigate(['/main/adcustomer'], {
-          queryParams: { message: 'You have registered successfully' }
-        });
+  //         this.router.navigate(['/main/adcustomer'], {
+  //         queryParams: { message: 'You have registered successfully' }
+  //       });
 
-      },
-      error: err => {
-        this.errors[0] = err.message;
-      }
-    });
+  //     },
+  //     error: err => {
+  //       this.errors[0] = err.message;
+  //     }
+  //   });
+  // }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home/listing']);
+    console.log("You out!!")
   }
 
 

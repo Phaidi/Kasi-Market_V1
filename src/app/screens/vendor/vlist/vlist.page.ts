@@ -5,6 +5,7 @@ import { LoadToastService } from 'src/app/helpers/toastHandler';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Food } from 'src/app/models/food.model';
 import { AddressService } from 'src/app/services/address/address.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { ItermService } from 'src/app/services/iterm/iterm.service';
 import { PayService } from 'src/app/services/pay/pay.service';
 
@@ -28,7 +29,8 @@ export class VlistPage implements OnInit {
     private toast: LoadToastService,
     private alertCtrl: AlertController, 
     private loadCrt: LoadingController,
-    public nav: NavController,) { }
+    public nav: NavController,
+    private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -96,5 +98,12 @@ export class VlistPage implements OnInit {
       }
     });
   }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home/listing']);
+    console.log("You out!!")
+  }
+
 
 }

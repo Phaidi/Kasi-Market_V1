@@ -79,6 +79,8 @@ export class ListingPage implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/home/listing']);
+    console.log("You out!!")
   }
 
 }

@@ -38,7 +38,7 @@ export class VuploadsPage implements OnInit {
         this.errors = [];
         this.toast.logToast('Item Created !!')
 
-        this.router.navigate(['/dash/vlist']);
+        this.router.navigate(['/vdash/vlist']);
 
       },
       error: err => {
