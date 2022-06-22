@@ -66,11 +66,8 @@ ion-content {
 
   .action-button {
       text-align: center;
-      .login-button {
-          --background: #f9b801;
-          width: 100%;
-          font-weight: bold;
-      }
+      
+
       p{
           margin-top: 15px;
           font-size: 1rem;
@@ -94,4 +91,10 @@ ion-content {
   p{
       font-style: italic;
   }
+}
+
+.login-button {
+    --background: #f9b801;
+    width: 100%;
+    font-weight: bold;
 }

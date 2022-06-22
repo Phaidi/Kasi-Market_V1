@@ -19,6 +19,7 @@ export class AddressPage implements OnInit {
   errors = [];
   id: number;
   distance = 0;
+  dCost: any;
 
   constructor(
     private addressService: AddressService,
@@ -30,8 +31,6 @@ export class AddressPage implements OnInit {
 
   ngOnInit() {
     // this.getCurrentLocation();
-    this.getTown();
-    console.log('address town:', this.distance);
   }
 
   // async getCurrentLocation() {
@@ -60,18 +59,19 @@ export class AddressPage implements OnInit {
 
   }
 
-  async getTown() {
-    if(this.adForm.town = "Pretoria central") {
-      this.distance = 29.8;
+  async getTown(tadForm:any) {
+    if(this.adForm.town == "Pretoria central") {
+      this.dCost = 29.8 * 16;
       this.adForm.dis = this.distance;
-    } else if(this.adForm.town = "Pretoria north"){
-      this.distance = 21.2;
-    } else if(this.adForm.town = "Pretoria west"){
-      this.distance = 29.8;
-    } else if(this.adForm.town = "Mabopane"){
-      this.distance = 8.7;
+    } else if(this.adForm.town == "Pretoria north"){
+      this.dCost = 21.2* 16;
+    } else if(this.adForm.town == "Pretoria west"){
+      this.dCost = 29.8 * 16;
+    } else if(this.adForm.town == "Mabopane"){
+      this.dCost = 8.7* 16;
     }
-    // hello
+    
+    console.log(this.dCost);
   }
 
 }

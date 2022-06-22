@@ -16,6 +16,7 @@ import { WishService } from 'src/app/services/wish/wish.service';
 export class DetailPage implements OnInit {
   id: number;
   food: Food = {} as Food;
+  vendor: string;
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -43,8 +44,10 @@ export class DetailPage implements OnInit {
     this.toast.presentLoading()
     this.itermService.getIterm(this.id).subscribe({
       next: (data: any) =>{
-        console.log('Hello from details',data.item.id);
+        console.log('Hello from details',data.user.name);
         this.food = data.item;
+        this.vendor = data.user.name+" " +data.user.surname;
+
 
       },
       error: err =>{

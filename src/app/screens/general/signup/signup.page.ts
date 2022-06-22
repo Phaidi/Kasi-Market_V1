@@ -42,7 +42,12 @@ signup(){
 
       },
       error: err => {
+
         this.errors[0] = err.message;
+        if(err.message.startsWith('Duplicate')){
+          this.errors[0] = 'Duplicate entry for user email';
+        }
+        
       }
     });
   }
