@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -9,15 +10,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/auth/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    HttpClientModule, 
+    BrowserModule,
+    IonicModule.forRoot(),
+    HttpClientModule,
     AppRoutingModule,
     // BrowserAnimationsModule, // required animations module
     // ToastrModule.forRoot(), // ToastrModule added
@@ -26,7 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }],
+  }, FileOpener],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
