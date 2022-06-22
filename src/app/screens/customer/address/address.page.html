@@ -18,7 +18,7 @@
       <ion-item>
         <ion-label>Select Town</ion-label>
         <ion-select name="town"
-        [(ngModel)]="adForm.town" 
+        [(ngModel)]="adForm.town"
         #town="ngModel" (ngModelChange)="getTown(adForm)">
           <ion-select-option value="Pretoria central">Pretoria central</ion-select-option>
           <ion-select-option value="Pretoria north">Pretoria north</ion-select-option>
@@ -26,7 +26,7 @@
           <ion-select-option value="Mabopane">Mabopane</ion-select-option>
         </ion-select>
       </ion-item>
-    
+
       <ion-item>
         <ion-input #dis="ngModel"
         [(ngModel)]="adForm.dis"
@@ -35,7 +35,7 @@
       </ion-item>
     </div>
     <div class="action-button ion-padding">
-      <ion-button size="large" shape="round" class="login-button" [disabled]="!f.valid">Save</ion-button>
+      <ion-button (click)="saveAddress()" size="large" shape="round" class="login-button" [disabled]="!f.valid">Save</ion-button>
     </div>
 
   </div>

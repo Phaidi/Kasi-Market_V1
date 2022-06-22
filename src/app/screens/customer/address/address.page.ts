@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-cond-assign */
 /* eslint-disable @typescript-eslint/quotes */
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,6 @@ import { Address } from '../../../models/address';
   styleUrls: ['./address.page.scss'],
 })
 export class AddressPage implements OnInit {
-
   adForm: Address = new Address();
   errors = [];
   id: number;
@@ -25,9 +25,10 @@ export class AddressPage implements OnInit {
     private addressService: AddressService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toast: LoadToastService) { 
-      this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-    }
+    private toast: LoadToastService
+  ) {
+    this.id = +this.activatedRoute.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
     // this.getCurrentLocation();
@@ -42,36 +43,32 @@ export class AddressPage implements OnInit {
   //   }
   // }
 
-  saveAddress(){
-
-    console.log("This is your form!!!!:",this.adForm)
+  saveAddress() {
+    console.log('This is your form!!!!:', this.adForm);
     this.addressService.createAddress(this.adForm).subscribe({
       next: (data: any) => {
-        this.toast.presentLoading()
+        this.toast.presentLoading();
         this.errors = [];
-    this.router.navigate(['/order/'+this.id]);
-
+        this.router.navigate(['/order/' + this.id]);
       },
-      error: err => {
+      error: (err) => {
         this.errors[0] = err.message;
-      }
-    })
-
+      },
+    });
   }
 
-  async getTown(tadForm:any) {
-    if(this.adForm.town == "Pretoria central") {
+  async getTown(adForm: any) {
+    if (this.adForm.town == 'Pretoria central') {
       this.dCost = 29.8 * 16;
       this.adForm.dis = this.distance;
-    } else if(this.adForm.town == "Pretoria north"){
-      this.dCost = 21.2* 16;
-    } else if(this.adForm.town == "Pretoria west"){
+    } else if (this.adForm.town == 'Pretoria north') {
+      this.dCost = 21.2 * 16;
+    } else if (this.adForm.town == 'Pretoria west') {
       this.dCost = 29.8 * 16;
-    } else if(this.adForm.town == "Mabopane"){
-      this.dCost = 8.7* 16;
-    }
-    
-    console.log(this.dCost);
-  }
+    } else if (this.adForm.town == 'Mabopane') {
+      this.dCost = 8.7 * 16;
 
+      console.log(this.dCost);
+    }
+  }
 }
