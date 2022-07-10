@@ -14,7 +14,7 @@ import { Address } from 'src/app/models/address';
 })
 export class PayService {
 
-  URL: string = `http://localhost:3000/api/v1/payments`
+  URL: string = `https://kasi-market.herokuapp.com/api/v1/payments`
 
   constructor(private http: HttpClient) { }
 

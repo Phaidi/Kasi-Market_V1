@@ -10,7 +10,7 @@ import { handleError } from 'src/app/helpers/extractErrors';
 })
 export class WishService {
 
-  URL: string = `http://localhost:3000/api/v1/wishes`
+  URL: string = `https://kasi-market.herokuapp.com/api/v1/wishes`
 
   constructor(private http:HttpClient) { }
 

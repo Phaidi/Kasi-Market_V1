@@ -13,7 +13,7 @@ import { Address } from 'src/app/models/address';
 })
 export class AddressService {
 
-  URL: string = `http://localhost:3000/api/v1/addresses`
+  URL: string = `https://kasi-market.herokuapp.com/api/v1/addresses`
   
   constructor(private http: HttpClient) { }
 

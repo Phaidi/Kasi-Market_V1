@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 /* eslint-disable new-parens */
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
@@ -17,8 +16,8 @@ export class ProfilePage implements OnInit {
   regForm: User1 = new User1;
   upForm: User1 = new User1;
   errors = [];
-  sum = 0;
-  items: any;
+  sum = 0
+  items: any
 
   selectTabs = 'orders';
   data: User1 = new User1;
@@ -32,13 +31,13 @@ export class ProfilePage implements OnInit {
     private toast: LoadToastService) { }
 
   ngOnInit() {
-    this.getMe();
-    this.getOrders();
+    this.getMe()
+    this.getOrders()
     this.regForm = new User1;
   }
 
   getMe(){
-    this.toast.presentLoading();
+    this.toast.presentLoading()
     this.userService.getMe().subscribe({
       next: (data: any) =>{
         console.log('Hello from my details',data.me);
@@ -53,32 +52,32 @@ export class ProfilePage implements OnInit {
   }
 
   userDate(date){
-    return date.substr(0,10);
+    return date.substr(0,10)
   }
   deliveryDate(date){
-    const d = new Date(date.substr(0,10));
+    let d = new Date(date.substr(0,10));
     d.setDate(d.getDate() + 7);
-    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
   }
   getSatus(date){
 
     // date = new Date(date.substr(0,10));
-    const d = new Date(date.substr(0,10));
+    let d = new Date(date.substr(0,10));
     d.setDate(d.getDate() + 7);
-
-    return  d.toDateString() >= Date() ? 'On the way': 'Delivered';
+   
+    return  d.toDateString() >= Date() ? "On the way": "Delivered"
 
   }
 
   getOrders(){
-    this.toast.presentLoading();
+    this.toast.presentLoading()
     this.orderService.getOrders().subscribe({
       next: (data: any) =>{
         console.log('Hello Orders',data.orders);
         console.log('Hello Items',data.items);
+        
 
-
-
+ 
         this.items = data.items;
         this.orders = data.orders;
 
@@ -97,15 +96,15 @@ export class ProfilePage implements OnInit {
         sum += a.item.price * a.quantity;
         // console.log('Hello Sum',a.orderNum);
       }
-
+      
     });
-    return sum;
-
+    return sum
+  
   }
 
   changePassword(){
 
-    this.toast.presentLoading();
+    this.toast.presentLoading()
     this.userService.upateAccount(this.regForm).subscribe({
       next: (data: any) =>{
         console.log('Hello from my details',data.me);
@@ -123,11 +122,11 @@ export class ProfilePage implements OnInit {
   requestVendorship(){
 
 
-    this.toast.presentLoading();
+    this.toast.presentLoading()
     this.userService.requestVendorship(this.upForm).subscribe({
       next: (data: any) =>{
-
-        this.toast.logToast('Vendor request was successfull 😋!!');
+        
+        this.toast.logToast('Vendor request was successfull 😋!!')
       },
       error: err =>{
         console.log(err);

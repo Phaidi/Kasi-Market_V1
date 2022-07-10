@@ -15,7 +15,7 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 export class CartService {
 
   private items$ = new BehaviorSubject<CartItem[]>([ ]);
-  URL = `http://localhost:3000/api/v1/carts`;
+  URL = `https://kasi-market.herokuapp.com/api/v1/carts`;
 
   constructor(private http: HttpClient) { }
 

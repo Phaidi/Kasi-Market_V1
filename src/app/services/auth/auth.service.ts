@@ -29,7 +29,7 @@ class DecodedToken {
 })
 export class AuthService {
 
-  URL = `http://localhost:3000/api/v1/users`;
+  URL = `https://kasi-market.herokuapp.com/api/v1/users`;
   private decodedToken: DecodedToken = new DecodedToken();
 
   constructor(private http: HttpClient) {

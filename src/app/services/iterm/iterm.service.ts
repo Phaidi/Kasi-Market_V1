@@ -11,7 +11,7 @@ import { Food } from 'src/app/models/food.model';
 })
 export class ItermService {
 
-  URL: string = `http://localhost:3000/api/v1/items`
+  URL: string = `https://kasi-market.herokuapp.com/api/v1/items`
 
   constructor(private http:HttpClient) { }
 
